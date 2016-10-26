@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            categoryId="com.cs.tu.analysis.commands.category"
+            id="com.cs.tu.analysis.commands.sampleCommand"
+            name="Sample Command">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="com.cs.tu.analysis.handlers.SampleHandler"
+            commandId="com.cs.tu.analysis.commands.sampleCommand">
+      </handler>
+   </extension>
+ 
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="popup:org.eclipse.ui.navigator.ProjectExplorer#PopupMenu">
+            <command
+                  commandId="com.cs.tu.analysis.commands.sampleCommand"
+                  id="com.cs.tu.analysis.menus.sampleCommand"
+                  mnemonic="S">
+ 
+                    <visibleWhen>
+				           <with variable="activeMenuSelection">
+				            <iterate
+				                 ifEmpty="false">
+				             <adapt type="org.eclipse.core.resources.IResource">
+				               <test property="org.eclipse.core.resources.name" value="*.gast" />
+				             </adapt>
+				            </iterate>
+				           </with>
+         			</visibleWhen>
+            </command>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            id="com.cs.tu.analysis"
+            name="Analyze Category">
+      </category>
+      <view
+            category="com.cs.tu.analysis"
+            class="com.cs.tu.analysis.views.AnalysisView"
+            icon="icons/sample.gif"
+            id="com.cs.tu.analysis.views.AnalysisView"
+            name="AnalysisView">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaPerspective">
+         <view
+               id="com.cs.tu.analysis.views.AnalysisView"
+               ratio="0.5"
+               relationship="right"
+               relative="org.eclipse.ui.views.ProblemView">
+         </view>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.help.contexts">
+      <contexts
+            file="contexts.xml">
+      </contexts>
+   </extension>
+</plugin>

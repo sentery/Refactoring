@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:Root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:accesses="http://www.fzi.de/gast/accesses" xmlns:core="http://www.fzi.de/gast/core" xmlns:statements="http://www.fzi.de/gast/statements" xmlns:types="http://www.fzi.de/gast/types" id="_UsYjcHlqEeapNKyVsEnlig">
+  <packages id="_UtR7UnlqEeapNKyVsEnlig" status="LIBRARY" sissyId="68" simpleName="com.cs.tu">
+    <subPackages id="_UtR7UHlqEeapNKyVsEnlig" status="LIBRARY" sissyId="32" simpleName="model">
+      <classes id="_UuBiOXlqEeapNKyVsEnlig" sissyId="29" visibility="VISIBILITYPUBLIC" simpleName="Analysis" referenceType="true">
+        <position endColumn="1" startColumn="1" endLine="15" startLine="3" sourceFile="_Utk2QnlqEeapNKyVsEnlig"/>
+        <constructors id="_UuxJEHlqEeapNKyVsEnlig" status="IMPLICIT" sissyId="52" simpleName="Analysis" visibility="VISIBILITYPUBLIC" static="true" virtual="true">
+          <position endColumn="-1" startColumn="-1" endLine="-1" startLine="-1"/>
+        </constructors>
+        <fields id="_Uvzq5HlqEeapNKyVsEnlig" sissyId="36" visibility="VISIBILITYPRIVAT" simpleName="_itemPrice" const="false">
+          <position endColumn="26" startColumn="17" endLine="5" startLine="5" sourceFile="_Utk2QnlqEeapNKyVsEnlig"/>
+          <typeDeclaration id="_Uvzq5XlqEeapNKyVsEnlig" sissyId="35" accessedTarget="_UuBiM3lqEeapNKyVsEnlig">
+            <position endColumn="26" startColumn="17" endLine="5" startLine="5" sourceFile="_Utk2QnlqEeapNKyVsEnlig"/>
+          </typeDeclaration>
+        </fields>
+        <fields id="_Uvzq5nlqEeapNKyVsEnlig" sissyId="34" visibility="VISIBILITYPRIVAT" simpleName="_quantity" const="false">
+          <position endColumn="25" startColumn="17" endLine="4" startLine="4" sourceFile="_Utk2QnlqEeapNKyVsEnlig"/>
+          <typeDeclaration id="_Uvzq53lqEeapNKyVsEnlig" sissyId="33" accessedTarget="_UuBiM3lqEeapNKyVsEnlig">
+            <position endColumn="25" startColumn="17" endLine="4" startLine="4" sourceFile="_Utk2QnlqEeapNKyVsEnlig"/>
+          </typeDeclaration>
+        </fields>
+        <methods id="_UueOIHlqEeapNKyVsEnlig" sissyId="37" simpleName="getPrice" numberOfStatements="6" maximumNestingLevel="1" linesOfComments="4" numberOfEdgesInCFG="6" numberOfNodesInCFG="5" visibility="VISIBILITYPUBLIC" virtual="true">
+          <position endColumn="5" startColumn="5" endLine="14" startLine="6" sourceFile="_Utk2QnlqEeapNKyVsEnlig"/>
+          <returnTypeDeclaration id="_UunYEHlqEeapNKyVsEnlig" sissyId="45" accessedTarget="_UuBiN3lqEeapNKyVsEnlig">
+            <position endColumn="5" startColumn="5" endLine="14" startLine="6" sourceFile="_Utk2QnlqEeapNKyVsEnlig"/>
+          </returnTypeDeclaration>
+          <localVariables id="_Uvzq4HlqEeapNKyVsEnlig" sissyId="49" simpleName="discountFactor" const="false">
+            <position endColumn="33" startColumn="16" endLine="8" startLine="8" sourceFile="_Utk2QnlqEeapNKyVsEnlig"/>
+            <typeDeclaration id="_Uvzq4XlqEeapNKyVsEnlig" sissyId="50" accessedTarget="_UuBiN3lqEeapNKyVsEnlig">
+              <position endColumn="33" startColumn="16" endLine="8" startLine="8" sourceFile="_Utk2QnlqEeapNKyVsEnlig"/>
+            </typeDeclaration>
+          </localVariables>
+          <localVariables id="_Uvzq4nlqEeapNKyVsEnlig" sissyId="46" simpleName="basePrice" const="false">
+            <position endColumn="44" startColumn="13" endLine="7" startLine="7" sourceFile="_Utk2QnlqEeapNKyVsEnlig"/>
+            <typeDeclaration id="_Uvzq43lqEeapNKyVsEnlig" sissyId="47" accessedTarget="_UuBiM3lqEeapNKyVsEnlig">
+              <position endColumn="44" startColumn="13" endLine="7" startLine="7" sourceFile="_Utk2QnlqEeapNKyVsEnlig"/>
+            </typeDeclaration>
+          </localVariables>
+          <body id="_UvEEAHlqEeapNKyVsEnlig" sissyId="38">
+            <position endColumn="5" startColumn="29" endLine="14" startLine="6" sourceFile="_Utk2QnlqEeapNKyVsEnlig"/>
+            <statements xsi:type="statements:SimpleStatement" id="_UvEEAXlqEeapNKyVsEnlig" sissyId="39">
+              <position endColumn="44" startColumn="9" endLine="7" startLine="7" sourceFile="_Utk2QnlqEeapNKyVsEnlig"/>
+              <accesses xsi:type="accesses:VariableAccess" id="_UwaH0XlqEeapNKyVsEnlig" sissyId="48" accessedTarget="_Uvzq4nlqEeapNKyVsEnlig" write="true">
+                <position endColumn="44" startColumn="13" endLine="7" startLine="7" sourceFile="_Utk2QnlqEeapNKyVsEnlig"/>
+              </accesses>
+              <accesses xsi:type="accesses:SelfAccess" id="_UwaH0nlqEeapNKyVsEnlig" status="LIBRARY" sissyId="59" accessedTarget="_Uvzq6HlqEeapNKyVsEnlig"/>
+              <accesses xsi:type="accesses:VariableAccess" id="_UwaH03lqEeapNKyVsEnlig" sissyId="60" accessedTarget="_Uvzq5nlqEeapNKyVsEnlig">
+                <position endColumn="33" startColumn="25" endLine="7" startLine="7" sourceFile="_Utk2QnlqEeapNKyVsEnlig"/>
+              </accesses>
+              <accesses xsi:type="accesses:SelfAccess" id="_UwaH1HlqEeapNKyVsEnlig" status="LIBRARY" sissyId="61" accessedTarget="_Uvzq6HlqEeapNKyVsEnlig"/>
+              <accesses xsi:type="accesses:VariableAccess" id="_UwaH1XlqEeapNKyVsEnlig" sissyId="62" accessedTarget="_Uvzq5HlqEeapNKyVsEnlig">
+                <position endColumn="44" startColumn="35" endLine="7" startLine="7" sourceFile="_Utk2QnlqEeapNKyVsEnlig"/>
+              </accesses>
+            </statements>
+            <statements xsi:type="statements:SimpleStatement" id="_UvEEAnlqEeapNKyVsEnlig" sissyId="40">
+              <position endColumn="33" startColumn="9" endLine="8" startLine="8" sourceFile="_Utk2QnlqEeapNKyVsEnlig"/>
+              <accesses xsi:type="accesses:VariableAccess" id="_UwaH1nlqEeapNKyVsEnlig" sissyId="51" accessedTarget="_Uvzq4HlqEeapNKyVsEnlig" write="true">
+                <position endColumn="33" startColumn="16" endLine="8" startLine="8" sourceFile="_Utk2QnlqEeapNKyVsEnlig"/>
+              </accesses>
+            </statements>
+            <statements xsi:type="statements:BranchStatement" id="_UvN1AHlqEeapNKyVsEnlig" sissyId="41">
+              <position endColumn="33" startColumn="9" endLine="12" startLine="9" sourceFile="_Utk2QnlqEeapNKyVsEnlig"/>
+              <accesses xsi:type="accesses:VariableAccess" id="_UwaH13lqEeapNKyVsEnlig" sissyId="63" accessedTarget="_Uvzq4nlqEeapNKyVsEnlig">
+                <position endColumn="20" startColumn="12" endLine="9" startLine="9" sourceFile="_Utk2QnlqEeapNKyVsEnlig"/>
+              </accesses>
+              <branches id="_UvW-8HlqEeapNKyVsEnlig">
+                <statement xsi:type="statements:SimpleStatement" id="_UvN1AXlqEeapNKyVsEnlig" sissyId="42">
+                  <position endColumn="33" startColumn="13" endLine="10" startLine="10" sourceFile="_Utk2QnlqEeapNKyVsEnlig"/>
+                  <accesses xsi:type="accesses:VariableAccess" id="_UwaH2HlqEeapNKyVsEnlig" sissyId="64" accessedTarget="_Uvzq4HlqEeapNKyVsEnlig" write="true">
+                    <position endColumn="26" startColumn="13" endLine="10" startLine="10" sourceFile="_Utk2QnlqEeapNKyVsEnlig"/>
+                  </accesses>
+                </statement>
+              </branches>
+              <branches id="_UvW-8XlqEeapNKyVsEnlig">
+                <statement xsi:type="statements:SimpleStatement" id="_UvN1AnlqEeapNKyVsEnlig" sissyId="43">
+                  <position endColumn="33" startColumn="13" endLine="12" startLine="12" sourceFile="_Utk2QnlqEeapNKyVsEnlig"/>
+                  <accesses xsi:type="accesses:VariableAccess" id="_UwaH2XlqEeapNKyVsEnlig" sissyId="65" accessedTarget="_Uvzq4HlqEeapNKyVsEnlig" write="true">
+                    <position endColumn="26" startColumn="13" endLine="12" startLine="12" sourceFile="_Utk2QnlqEeapNKyVsEnlig"/>
+                  </accesses>
+                </statement>
+              </branches>
+            </statements>
+            <statements xsi:type="statements:JumpStatement" id="_UvN1A3lqEeapNKyVsEnlig" sissyId="44" kind="RETURN">
+              <position endColumn="40" startColumn="9" endLine="13" startLine="13" sourceFile="_Utk2QnlqEeapNKyVsEnlig"/>
+              <accesses xsi:type="accesses:VariableAccess" id="_UwaH2nlqEeapNKyVsEnlig" sissyId="66" accessedTarget="_Uvzq4nlqEeapNKyVsEnlig">
+                <position endColumn="24" startColumn="16" endLine="13" startLine="13" sourceFile="_Utk2QnlqEeapNKyVsEnlig"/>
+              </accesses>
+              <accesses xsi:type="accesses:VariableAccess" id="_UwaH23lqEeapNKyVsEnlig" sissyId="67" accessedTarget="_Uvzq4HlqEeapNKyVsEnlig">
+                <position endColumn="39" startColumn="26" endLine="13" startLine="13" sourceFile="_Utk2QnlqEeapNKyVsEnlig"/>
+              </accesses>
+            </statements>
+          </body>
+        </methods>
+        <inheritanceTypeAccesses id="_UwaH0HlqEeapNKyVsEnlig" sissyId="58" accessedTarget="_UuBiOnlqEeapNKyVsEnlig">
+          <position endColumn="1" startColumn="1" endLine="15" startLine="3" sourceFile="_Utk2QnlqEeapNKyVsEnlig"/>
+        </inheritanceTypeAccesses>
+        <self id="_Uvzq6HlqEeapNKyVsEnlig" status="IMPLICIT" sissyId="30" visibility="VISIBILITYPRIVAT" simpleName="&lt;self>" const="false">
+          <position endColumn="-1" startColumn="-1" endLine="-1" startLine="-1"/>
+          <typeDeclaration id="_Uvzq6XlqEeapNKyVsEnlig" status="IMPLICIT" sissyId="31" accessedTarget="_UuBiOXlqEeapNKyVsEnlig">
+            <position endColumn="-1" startColumn="-1" endLine="-1" startLine="-1"/>
+          </typeDeclaration>
+        </self>
+      </classes>
+    </subPackages>
+  </packages>
+  <packages id="_UtR7U3lqEeapNKyVsEnlig" status="LIBRARY" sissyId="69" simpleName="java">
+    <subPackages id="_UtR7UXlqEeapNKyVsEnlig" status="LIBRARY" sissyId="57" simpleName="lang">
+      <classes id="_UuBiOnlqEeapNKyVsEnlig" status="LIBRARY" sissyId="53" visibility="VISIBILITYPUBLIC" simpleName="Object" referenceType="true">
+        <position assembly="_Utk2TXlqEeapNKyVsEnlig"/>
+        <self id="_Uvqg8HlqEeapNKyVsEnlig" status="IMPLICIT" sissyId="54" visibility="VISIBILITYPRIVAT" simpleName="&lt;self>" const="false">
+          <position endColumn="-1" startColumn="-1" endLine="-1" startLine="-1"/>
+          <typeDeclaration id="_Uvqg8XlqEeapNKyVsEnlig" status="IMPLICIT" sissyId="55" accessedTarget="_UuBiOnlqEeapNKyVsEnlig">
+            <position endColumn="-1" startColumn="-1" endLine="-1" startLine="-1"/>
+          </typeDeclaration>
+        </self>
+      </classes>
+    </subPackages>
+  </packages>
+  <types xsi:type="types:GASTClass" id="_UuBiMHlqEeapNKyVsEnlig" status="IMPLICIT" sissyId="1" visibility="VISIBILITYPACKAGE" simpleName="char" primitive="true">
+    <self id="_Uvzq-nlqEeapNKyVsEnlig" status="IMPLICIT" sissyId="2" visibility="VISIBILITYPRIVAT" simpleName="&lt;self>" const="false">
+      <position endColumn="-1" startColumn="-1" endLine="-1" startLine="-1"/>
+      <typeDeclaration id="_Uvzq-3lqEeapNKyVsEnlig" status="IMPLICIT" sissyId="3" accessedTarget="_UuBiMHlqEeapNKyVsEnlig">
+        <position endColumn="-1" startColumn="-1" endLine="-1" startLine="-1"/>
+      </typeDeclaration>
+    </self>
+  </types>
+  <types xsi:type="types:GASTClass" id="_UuBiMXlqEeapNKyVsEnlig" status="IMPLICIT" sissyId="4" visibility="VISIBILITYPACKAGE" simpleName="short" primitive="true">
+    <self id="_Uvzq-HlqEeapNKyVsEnlig" status="IMPLICIT" sissyId="5" visibility="VISIBILITYPRIVAT" simpleName="&lt;self>" const="false">
+      <position endColumn="-1" startColumn="-1" endLine="-1" startLine="-1"/>
+      <typeDeclaration id="_Uvzq-XlqEeapNKyVsEnlig" status="IMPLICIT" sissyId="6" accessedTarget="_UuBiMXlqEeapNKyVsEnlig">
+        <position endColumn="-1" startColumn="-1" endLine="-1" startLine="-1"/>
+      </typeDeclaration>
+    </self>
+  </types>
+  <types xsi:type="types:GASTClass" id="_UuBiMnlqEeapNKyVsEnlig" status="IMPLICIT" sissyId="7" visibility="VISIBILITYPACKAGE" simpleName="byte" primitive="true">
+    <self id="_Uvzq9nlqEeapNKyVsEnlig" status="IMPLICIT" sissyId="8" visibility="VISIBILITYPRIVAT" simpleName="&lt;self>" const="false">
+      <position endColumn="-1" startColumn="-1" endLine="-1" startLine="-1"/>
+      <typeDeclaration id="_Uvzq93lqEeapNKyVsEnlig" status="IMPLICIT" sissyId="9" accessedTarget="_UuBiMnlqEeapNKyVsEnlig">
+        <position endColumn="-1" startColumn="-1" endLine="-1" startLine="-1"/>
+      </typeDeclaration>
+    </self>
+  </types>
+  <types xsi:type="types:GASTClass" id="_UuBiM3lqEeapNKyVsEnlig" status="IMPLICIT" sissyId="10" visibility="VISIBILITYPACKAGE" simpleName="int" primitive="true">
+    <self id="_Uvzq9HlqEeapNKyVsEnlig" status="IMPLICIT" sissyId="11" visibility="VISIBILITYPRIVAT" simpleName="&lt;self>" const="false">
+      <position endColumn="-1" startColumn="-1" endLine="-1" startLine="-1"/>
+      <typeDeclaration id="_Uvzq9XlqEeapNKyVsEnlig" status="IMPLICIT" sissyId="12" accessedTarget="_UuBiM3lqEeapNKyVsEnlig">
+        <position endColumn="-1" startColumn="-1" endLine="-1" startLine="-1"/>
+      </typeDeclaration>
+    </self>
+  </types>
+  <types xsi:type="types:GASTClass" id="_UuBiNHlqEeapNKyVsEnlig" status="IMPLICIT" sissyId="13" visibility="VISIBILITYPACKAGE" simpleName="long" primitive="true">
+    <self id="_Uvzq8nlqEeapNKyVsEnlig" status="IMPLICIT" sissyId="14" visibility="VISIBILITYPRIVAT" simpleName="&lt;self>" const="false">
+      <position endColumn="-1" startColumn="-1" endLine="-1" startLine="-1"/>
+      <typeDeclaration id="_Uvzq83lqEeapNKyVsEnlig" status="IMPLICIT" sissyId="15" accessedTarget="_UuBiNHlqEeapNKyVsEnlig">
+        <position endColumn="-1" startColumn="-1" endLine="-1" startLine="-1"/>
+      </typeDeclaration>
+    </self>
+  </types>
+  <types xsi:type="types:GASTClass" id="_UuBiNXlqEeapNKyVsEnlig" status="IMPLICIT" sissyId="16" visibility="VISIBILITYPACKAGE" simpleName="float" primitive="true">
+    <self id="_Uvzq8HlqEeapNKyVsEnlig" status="IMPLICIT" sissyId="17" visibility="VISIBILITYPRIVAT" simpleName="&lt;self>" const="false">
+      <position endColumn="-1" startColumn="-1" endLine="-1" startLine="-1"/>
+      <typeDeclaration id="_Uvzq8XlqEeapNKyVsEnlig" status="IMPLICIT" sissyId="18" accessedTarget="_UuBiNXlqEeapNKyVsEnlig">
+        <position endColumn="-1" startColumn="-1" endLine="-1" startLine="-1"/>
+      </typeDeclaration>
+    </self>
+  </types>
+  <types xsi:type="types:GASTClass" id="_UuBiNnlqEeapNKyVsEnlig" status="IMPLICIT" sissyId="19" visibility="VISIBILITYPACKAGE" simpleName="void" primitive="true">
+    <self id="_Uvzq7nlqEeapNKyVsEnlig" status="IMPLICIT" sissyId="20" visibility="VISIBILITYPRIVAT" simpleName="&lt;self>" const="false">
+      <position endColumn="-1" startColumn="-1" endLine="-1" startLine="-1"/>
+      <typeDeclaration id="_Uvzq73lqEeapNKyVsEnlig" status="IMPLICIT" sissyId="21" accessedTarget="_UuBiNnlqEeapNKyVsEnlig">
+        <position endColumn="-1" startColumn="-1" endLine="-1" startLine="-1"/>
+      </typeDeclaration>
+    </self>
+  </types>
+  <types xsi:type="types:GASTClass" id="_UuBiN3lqEeapNKyVsEnlig" status="IMPLICIT" sissyId="22" visibility="VISIBILITYPACKAGE" simpleName="double" primitive="true">
+    <self id="_Uvzq7HlqEeapNKyVsEnlig" status="IMPLICIT" sissyId="23" visibility="VISIBILITYPRIVAT" simpleName="&lt;self>" const="false">
+      <position endColumn="-1" startColumn="-1" endLine="-1" startLine="-1"/>
+      <typeDeclaration id="_Uvzq7XlqEeapNKyVsEnlig" status="IMPLICIT" sissyId="24" accessedTarget="_UuBiN3lqEeapNKyVsEnlig">
+        <position endColumn="-1" startColumn="-1" endLine="-1" startLine="-1"/>
+      </typeDeclaration>
+    </self>
+  </types>
+  <types xsi:type="types:GASTClass" id="_UuBiOHlqEeapNKyVsEnlig" status="IMPLICIT" sissyId="25" visibility="VISIBILITYPACKAGE" simpleName="boolean" primitive="true">
+    <self id="_Uvzq6nlqEeapNKyVsEnlig" status="IMPLICIT" sissyId="26" visibility="VISIBILITYPRIVAT" simpleName="&lt;self>" const="false">
+      <position endColumn="-1" startColumn="-1" endLine="-1" startLine="-1"/>
+      <typeDeclaration id="_Uvzq63lqEeapNKyVsEnlig" status="IMPLICIT" sissyId="27" accessedTarget="_UuBiOHlqEeapNKyVsEnlig">
+        <position endColumn="-1" startColumn="-1" endLine="-1" startLine="-1"/>
+      </typeDeclaration>
+    </self>
+  </types>
+  <basePaths id="_Utk2QHlqEeapNKyVsEnlig" path="">
+    <directories id="_UtbFQHlqEeapNKyVsEnlig" simpleName="/"/>
+    <directories id="_Utk2QXlqEeapNKyVsEnlig" simpleName="UnknownDirectory"/>
+    <directories id="_Utk2Q3lqEeapNKyVsEnlig" simpleName="FILE:C:">
+      <subDirectory id="_Utk2RHlqEeapNKyVsEnlig" simpleName="Documents and Settings">
+        <subDirectory id="_Utk2RXlqEeapNKyVsEnlig" simpleName="true">
+          <subDirectory id="_Utk2RnlqEeapNKyVsEnlig" simpleName="workspace_model">
+            <subDirectory id="_Utk2R3lqEeapNKyVsEnlig" simpleName="CaseStudy2">
+              <subDirectory id="_Utk2SHlqEeapNKyVsEnlig" simpleName="src">
+                <subDirectory id="_Utk2SXlqEeapNKyVsEnlig" simpleName="com">
+                  <subDirectory id="_Utk2SnlqEeapNKyVsEnlig" simpleName="cs">
+                    <subDirectory id="_Utk2S3lqEeapNKyVsEnlig" simpleName="tu">
+                      <subDirectory id="_Utk2THlqEeapNKyVsEnlig" simpleName="model">
+                        <files id="_Utk2QnlqEeapNKyVsEnlig" sissyId="28" simpleName="Analysis.java" sourceFile="true"/>
+                      </subDirectory>
+                    </subDirectory>
+                  </subDirectory>
+                </subDirectory>
+              </subDirectory>
+            </subDirectory>
+          </subDirectory>
+        </subDirectory>
+      </subDirectory>
+    </directories>
+    <directories id="_Utk2TnlqEeapNKyVsEnlig" simpleName="ARCHIVE:C:">
+      <subDirectory id="_Utk2T3lqEeapNKyVsEnlig" simpleName="Program Files">
+        <subDirectory id="_Utk2UHlqEeapNKyVsEnlig" simpleName="Java">
+          <subDirectory id="_Utk2UXlqEeapNKyVsEnlig" simpleName="jdk1.7.0_80">
+            <subDirectory id="_Utk2UnlqEeapNKyVsEnlig" simpleName="jre">
+              <subDirectory id="_Utk2U3lqEeapNKyVsEnlig" simpleName="lib">
+                <subDirectory id="_Utk2VHlqEeapNKyVsEnlig" simpleName="rt.jar?java">
+                  <subDirectory id="_Utk2VXlqEeapNKyVsEnlig" simpleName="lang">
+                    <files id="_Utk2TXlqEeapNKyVsEnlig" status="LIBRARY" sissyId="56" simpleName="Object.class"/>
+                  </subDirectory>
+                </subDirectory>
+              </subDirectory>
+            </subDirectory>
+          </subDirectory>
+        </subDirectory>
+      </subDirectory>
+    </directories>
+  </basePaths>
+</core:Root>

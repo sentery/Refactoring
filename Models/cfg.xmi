@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<com.cs.tu.findrefactor:MControlFlowGraph xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.cs.tu.findrefactor="http://com/cs/tu/findrefactor" name="getPrice">
+  <nodes xsi:type="com.cs.tu.findrefactor:Node" toNode="//@nodes.1" dataFlow="//@nodes.3" dUse="true">
+    <var name="basePrice"/>
+  </nodes>
+  <nodes xsi:type="com.cs.tu.findrefactor:Node" fromNode="//@nodes.0" toNode="//@nodes.2" dataFlow="//@nodes.2/@falseConditionNode //@nodes.2/@trueConditionNode //@nodes.3" dUse="true">
+    <var name="discountFactor"/>
+  </nodes>
+  <nodes xsi:type="com.cs.tu.findrefactor:ConditionalNode" fromNode="//@nodes.1" toNode="//@nodes.3" dataFlow="//@nodes.3" dUse="false">
+    <var name="basePrice"/>
+    <trueConditionNode dataFlow="//@nodes.2/@falseConditionNode //@nodes.3" dUse="true">
+      <var name="discountFactor"/>
+    </trueConditionNode>
+    <falseConditionNode dataFlow="//@nodes.2/@trueConditionNode //@nodes.3" dUse="true">
+      <var name="discountFactor"/>
+    </falseConditionNode>
+  </nodes>
+  <nodes xsi:type="com.cs.tu.findrefactor:Node" fromNode="//@nodes.2" dUse="false">
+    <var name="basePrice"/>
+    <var name="discountFactor"/>
+  </nodes>
+  <localVar name="discountFactor"/>
+  <localVar name="basePrice"/>
+</com.cs.tu.findrefactor:MControlFlowGraph>

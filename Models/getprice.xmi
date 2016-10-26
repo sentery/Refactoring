@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:Root xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:accesses="http://www.fzi.de/gast/accesses" xmlns:core="http://www.fzi.de/gast/core" xmlns:statements="http://www.fzi.de/gast/statements" xmlns:types="http://www.fzi.de/gast/types" id="_wow20ISDEea2PLYoJuiGyg">
+  <packages id="_wow204SDEea2PLYoJuiGyg" status="LIBRARY" sissyId="68" simpleName="com.cs.tu">
+    <subPackages id="_wow20YSDEea2PLYoJuiGyg" status="LIBRARY" sissyId="32" simpleName="model">
+      <classes id="_wo6n2YSDEea2PLYoJuiGyg" sissyId="29" visibility="VISIBILITYPUBLIC" simpleName="Analysis" referenceType="true">
+        <position endColumn="1" startColumn="1" endLine="15" startLine="3" sourceFile="_wow22ISDEea2PLYoJuiGyg"/>
+        <constructors id="_wpEY0oSDEea2PLYoJuiGyg" status="IMPLICIT" sissyId="52" simpleName="Analysis" visibility="VISIBILITYPUBLIC" static="true" virtual="true">
+          <position endColumn="-1" startColumn="-1" endLine="-1" startLine="-1"/>
+        </constructors>
+        <fields id="_wpXTxoSDEea2PLYoJuiGyg" sissyId="36" visibility="VISIBILITYPRIVAT" simpleName="_itemPrice" const="false">
+          <position endColumn="26" startColumn="17" endLine="5" startLine="5" sourceFile="_wow22ISDEea2PLYoJuiGyg"/>
+          <typeDeclaration id="_wpXTx4SDEea2PLYoJuiGyg" sissyId="35" accessedTarget="_wo6n04SDEea2PLYoJuiGyg">
+            <position endColumn="26" startColumn="17" endLine="5" startLine="5" sourceFile="_wow22ISDEea2PLYoJuiGyg"/>
+          </typeDeclaration>
+        </fields>
+        <fields id="_wpXTyISDEea2PLYoJuiGyg" sissyId="34" visibility="VISIBILITYPRIVAT" simpleName="_quantity" const="false">
+          <position endColumn="25" startColumn="17" endLine="4" startLine="4" sourceFile="_wow22ISDEea2PLYoJuiGyg"/>
+          <typeDeclaration id="_wpXTyYSDEea2PLYoJuiGyg" sissyId="33" accessedTarget="_wo6n04SDEea2PLYoJuiGyg">
+            <position endColumn="25" startColumn="17" endLine="4" startLine="4" sourceFile="_wow22ISDEea2PLYoJuiGyg"/>
+          </typeDeclaration>
+        </fields>
+        <methods id="_wpEY0ISDEea2PLYoJuiGyg" sissyId="37" simpleName="getPrice" numberOfStatements="6" maximumNestingLevel="1" linesOfComments="4" numberOfEdgesInCFG="6" numberOfNodesInCFG="5" visibility="VISIBILITYPUBLIC" virtual="true">
+          <position endColumn="5" startColumn="5" endLine="14" startLine="6" sourceFile="_wow22ISDEea2PLYoJuiGyg"/>
+          <returnTypeDeclaration id="_wpEY0YSDEea2PLYoJuiGyg" sissyId="45" accessedTarget="_wo6n14SDEea2PLYoJuiGyg">
+            <position endColumn="5" startColumn="5" endLine="14" startLine="6" sourceFile="_wow22ISDEea2PLYoJuiGyg"/>
+          </returnTypeDeclaration>
+          <localVariables id="_wpXTwoSDEea2PLYoJuiGyg" sissyId="49" simpleName="discountFactor" const="false">
+            <position endColumn="33" startColumn="16" endLine="8" startLine="8" sourceFile="_wow22ISDEea2PLYoJuiGyg"/>
+            <typeDeclaration id="_wpXTw4SDEea2PLYoJuiGyg" sissyId="50" accessedTarget="_wo6n14SDEea2PLYoJuiGyg">
+              <position endColumn="33" startColumn="16" endLine="8" startLine="8" sourceFile="_wow22ISDEea2PLYoJuiGyg"/>
+            </typeDeclaration>
+          </localVariables>
+          <localVariables id="_wpXTxISDEea2PLYoJuiGyg" sissyId="46" simpleName="basePrice" const="false">
+            <position endColumn="44" startColumn="13" endLine="7" startLine="7" sourceFile="_wow22ISDEea2PLYoJuiGyg"/>
+            <typeDeclaration id="_wpXTxYSDEea2PLYoJuiGyg" sissyId="47" accessedTarget="_wo6n04SDEea2PLYoJuiGyg">
+              <position endColumn="44" startColumn="13" endLine="7" startLine="7" sourceFile="_wow22ISDEea2PLYoJuiGyg"/>
+            </typeDeclaration>
+          </localVariables>
+          <body id="_wpNiwISDEea2PLYoJuiGyg" sissyId="38">
+            <position endColumn="5" startColumn="29" endLine="14" startLine="6" sourceFile="_wow22ISDEea2PLYoJuiGyg"/>
+            <statements xsi:type="statements:SimpleStatement" id="_wpNiwYSDEea2PLYoJuiGyg" sissyId="39">
+              <position endColumn="44" startColumn="9" endLine="7" startLine="7" sourceFile="_wow22ISDEea2PLYoJuiGyg"/>
+              <accesses xsi:type="accesses:VariableAccess" id="_wpz_sYSDEea2PLYoJuiGyg" sissyId="48" accessedTarget="_wpXTxISDEea2PLYoJuiGyg" write="true">
+                <position endColumn="44" startColumn="13" endLine="7" startLine="7" sourceFile="_wow22ISDEea2PLYoJuiGyg"/>
+              </accesses>
+              <accesses xsi:type="accesses:SelfAccess" id="_wpz_soSDEea2PLYoJuiGyg" status="LIBRARY" sissyId="59" accessedTarget="_wpXTyoSDEea2PLYoJuiGyg"/>
+              <accesses xsi:type="accesses:VariableAccess" id="_wpz_s4SDEea2PLYoJuiGyg" sissyId="60" accessedTarget="_wpXTyISDEea2PLYoJuiGyg">
+                <position endColumn="33" startColumn="25" endLine="7" startLine="7" sourceFile="_wow22ISDEea2PLYoJuiGyg"/>
+              </accesses>
+              <accesses xsi:type="accesses:SelfAccess" id="_wpz_tISDEea2PLYoJuiGyg" status="LIBRARY" sissyId="61" accessedTarget="_wpXTyoSDEea2PLYoJuiGyg"/>
+              <accesses xsi:type="accesses:VariableAccess" id="_wpz_tYSDEea2PLYoJuiGyg" sissyId="62" accessedTarget="_wpXTxoSDEea2PLYoJuiGyg">
+                <position endColumn="44" startColumn="35" endLine="7" startLine="7" sourceFile="_wow22ISDEea2PLYoJuiGyg"/>
+              </accesses>
+            </statements>
+            <statements xsi:type="statements:SimpleStatement" id="_wpNiwoSDEea2PLYoJuiGyg" sissyId="40">
+              <position endColumn="33" startColumn="9" endLine="8" startLine="8" sourceFile="_wow22ISDEea2PLYoJuiGyg"/>
+              <accesses xsi:type="accesses:VariableAccess" id="_wpz_toSDEea2PLYoJuiGyg" sissyId="51" accessedTarget="_wpXTwoSDEea2PLYoJuiGyg" write="true">
+                <position endColumn="33" startColumn="16" endLine="8" startLine="8" sourceFile="_wow22ISDEea2PLYoJuiGyg"/>
+              </accesses>
+            </statements>
+            <statements xsi:type="statements:BranchStatement" id="_wpNiw4SDEea2PLYoJuiGyg" sissyId="41">
+              <position endColumn="33" startColumn="9" endLine="12" startLine="9" sourceFile="_wow22ISDEea2PLYoJuiGyg"/>
+              <accesses xsi:type="accesses:VariableAccess" id="_wpz_t4SDEea2PLYoJuiGyg" sissyId="63" accessedTarget="_wpXTxISDEea2PLYoJuiGyg">
+                <position endColumn="20" startColumn="12" endLine="9" startLine="9" sourceFile="_wow22ISDEea2PLYoJuiGyg"/>
+              </accesses>
+              <branches id="_wpNix4SDEea2PLYoJuiGyg">
+                <statement xsi:type="statements:SimpleStatement" id="_wpNixISDEea2PLYoJuiGyg" sissyId="42">
+                  <position endColumn="33" startColumn="13" endLine="10" startLine="10" sourceFile="_wow22ISDEea2PLYoJuiGyg"/>
+                  <accesses xsi:type="accesses:VariableAccess" id="_wpz_uISDEea2PLYoJuiGyg" sissyId="64" accessedTarget="_wpXTwoSDEea2PLYoJuiGyg" write="true">
+                    <position endColumn="26" startColumn="13" endLine="10" startLine="10" sourceFile="_wow22ISDEea2PLYoJuiGyg"/>
+                  </accesses>
+                </statement>
+              </branches>
+              <branches id="_wpNiyISDEea2PLYoJuiGyg">
+                <statement xsi:type="statements:SimpleStatement" id="_wpNixYSDEea2PLYoJuiGyg" sissyId="43">
+                  <position endColumn="33" startColumn="13" endLine="12" startLine="12" sourceFile="_wow22ISDEea2PLYoJuiGyg"/>
+                  <accesses xsi:type="accesses:VariableAccess" id="_wpz_uYSDEea2PLYoJuiGyg" sissyId="65" accessedTarget="_wpXTwoSDEea2PLYoJuiGyg" write="true">
+                    <position endColumn="26" startColumn="13" endLine="12" startLine="12" sourceFile="_wow22ISDEea2PLYoJuiGyg"/>
+                  </accesses>
+                </statement>
+              </branches>
+            </statements>
+            <statements xsi:type="statements:JumpStatement" id="_wpNixoSDEea2PLYoJuiGyg" sissyId="44" kind="RETURN">
+              <position endColumn="40" startColumn="9" endLine="13" startLine="13" sourceFile="_wow22ISDEea2PLYoJuiGyg"/>
+              <accesses xsi:type="accesses:VariableAccess" id="_wpz_uoSDEea2PLYoJuiGyg" sissyId="66" accessedTarget="_wpXTxISDEea2PLYoJuiGyg">
+                <position endColumn="24" startColumn="16" endLine="13" startLine="13" sourceFile="_wow22ISDEea2PLYoJuiGyg"/>
+              </accesses>
+              <accesses xsi:type="accesses:VariableAccess" id="_wpz_u4SDEea2PLYoJuiGyg" sissyId="67" accessedTarget="_wpXTwoSDEea2PLYoJuiGyg">
+                <position endColumn="39" startColumn="26" endLine="13" startLine="13" sourceFile="_wow22ISDEea2PLYoJuiGyg"/>
+              </accesses>
+            </statements>
+          </body>
+        </methods>
+        <inheritanceTypeAccesses id="_wpz_sISDEea2PLYoJuiGyg" sissyId="58" accessedTarget="_wo6n2oSDEea2PLYoJuiGyg">
+          <position endColumn="1" startColumn="1" endLine="15" startLine="3" sourceFile="_wow22ISDEea2PLYoJuiGyg"/>
+        </inheritanceTypeAccesses>
+        <self id="_wpXTyoSDEea2PLYoJuiGyg" status="IMPLICIT" sissyId="30" visibility="VISIBILITYPRIVAT" simpleName="&lt;self>" const="false">
+          <position endColumn="-1" startColumn="-1" endLine="-1" startLine="-1"/>
+          <typeDeclaration id="_wpXTy4SDEea2PLYoJuiGyg" status="IMPLICIT" sissyId="31" accessedTarget="_wo6n2YSDEea2PLYoJuiGyg">
+            <position endColumn="-1" startColumn="-1" endLine="-1" startLine="-1"/>
+          </typeDeclaration>
+        </self>
+      </classes>
+    </subPackages>
+  </packages>
+  <packages id="_wow21ISDEea2PLYoJuiGyg" status="LIBRARY" sissyId="69" simpleName="java">
+    <subPackages id="_wow20oSDEea2PLYoJuiGyg" status="LIBRARY" sissyId="57" simpleName="lang">
+      <classes id="_wo6n2oSDEea2PLYoJuiGyg" status="LIBRARY" sissyId="53" visibility="VISIBILITYPUBLIC" simpleName="Object" referenceType="true">
+        <position assembly="_wow244SDEea2PLYoJuiGyg"/>
+        <self id="_wpXTwISDEea2PLYoJuiGyg" status="IMPLICIT" sissyId="54" visibility="VISIBILITYPRIVAT" simpleName="&lt;self>" const="false">
+          <position endColumn="-1" startColumn="-1" endLine="-1" startLine="-1"/>
+          <typeDeclaration id="_wpXTwYSDEea2PLYoJuiGyg" status="IMPLICIT" sissyId="55" accessedTarget="_wo6n2oSDEea2PLYoJuiGyg">
+            <position endColumn="-1" startColumn="-1" endLine="-1" startLine="-1"/>
+          </typeDeclaration>
+        </self>
+      </classes>
+    </subPackages>
+  </packages>
+  <types xsi:type="types:GASTClass" id="_wo6n0ISDEea2PLYoJuiGyg" status="IMPLICIT" sissyId="1" visibility="VISIBILITYPACKAGE" simpleName="char" primitive="true">
+    <self id="_wpgdtISDEea2PLYoJuiGyg" status="IMPLICIT" sissyId="2" visibility="VISIBILITYPRIVAT" simpleName="&lt;self>" const="false">
+      <position endColumn="-1" startColumn="-1" endLine="-1" startLine="-1"/>
+      <typeDeclaration id="_wpgdtYSDEea2PLYoJuiGyg" status="IMPLICIT" sissyId="3" accessedTarget="_wo6n0ISDEea2PLYoJuiGyg">
+        <position endColumn="-1" startColumn="-1" endLine="-1" startLine="-1"/>
+      </typeDeclaration>
+    </self>
+  </types>
+  <types xsi:type="types:GASTClass" id="_wo6n0YSDEea2PLYoJuiGyg" status="IMPLICIT" sissyId="4" visibility="VISIBILITYPACKAGE" simpleName="short" primitive="true">
+    <self id="_wpgdsoSDEea2PLYoJuiGyg" status="IMPLICIT" sissyId="5" visibility="VISIBILITYPRIVAT" simpleName="&lt;self>" const="false">
+      <position endColumn="-1" startColumn="-1" endLine="-1" startLine="-1"/>
+      <typeDeclaration id="_wpgds4SDEea2PLYoJuiGyg" status="IMPLICIT" sissyId="6" accessedTarget="_wo6n0YSDEea2PLYoJuiGyg">
+        <position endColumn="-1" startColumn="-1" endLine="-1" startLine="-1"/>
+      </typeDeclaration>
+    </self>
+  </types>
+  <types xsi:type="types:GASTClass" id="_wo6n0oSDEea2PLYoJuiGyg" status="IMPLICIT" sissyId="7" visibility="VISIBILITYPACKAGE" simpleName="byte" primitive="true">
+    <self id="_wpgdsISDEea2PLYoJuiGyg" status="IMPLICIT" sissyId="8" visibility="VISIBILITYPRIVAT" simpleName="&lt;self>" const="false">
+      <position endColumn="-1" startColumn="-1" endLine="-1" startLine="-1"/>
+      <typeDeclaration id="_wpgdsYSDEea2PLYoJuiGyg" status="IMPLICIT" sissyId="9" accessedTarget="_wo6n0oSDEea2PLYoJuiGyg">
+        <position endColumn="-1" startColumn="-1" endLine="-1" startLine="-1"/>
+      </typeDeclaration>
+    </self>
+  </types>
+  <types xsi:type="types:GASTClass" id="_wo6n04SDEea2PLYoJuiGyg" status="IMPLICIT" sissyId="10" visibility="VISIBILITYPACKAGE" simpleName="int" primitive="true">
+    <self id="_wpXT1oSDEea2PLYoJuiGyg" status="IMPLICIT" sissyId="11" visibility="VISIBILITYPRIVAT" simpleName="&lt;self>" const="false">
+      <position endColumn="-1" startColumn="-1" endLine="-1" startLine="-1"/>
+      <typeDeclaration id="_wpXT14SDEea2PLYoJuiGyg" status="IMPLICIT" sissyId="12" accessedTarget="_wo6n04SDEea2PLYoJuiGyg">
+        <position endColumn="-1" startColumn="-1" endLine="-1" startLine="-1"/>
+      </typeDeclaration>
+    </self>
+  </types>
+  <types xsi:type="types:GASTClass" id="_wo6n1ISDEea2PLYoJuiGyg" status="IMPLICIT" sissyId="13" visibility="VISIBILITYPACKAGE" simpleName="long" primitive="true">
+    <self id="_wpXT1ISDEea2PLYoJuiGyg" status="IMPLICIT" sissyId="14" visibility="VISIBILITYPRIVAT" simpleName="&lt;self>" const="false">
+      <position endColumn="-1" startColumn="-1" endLine="-1" startLine="-1"/>
+      <typeDeclaration id="_wpXT1YSDEea2PLYoJuiGyg" status="IMPLICIT" sissyId="15" accessedTarget="_wo6n1ISDEea2PLYoJuiGyg">
+        <position endColumn="-1" startColumn="-1" endLine="-1" startLine="-1"/>
+      </typeDeclaration>
+    </self>
+  </types>
+  <types xsi:type="types:GASTClass" id="_wo6n1YSDEea2PLYoJuiGyg" status="IMPLICIT" sissyId="16" visibility="VISIBILITYPACKAGE" simpleName="float" primitive="true">
+    <self id="_wpXT0oSDEea2PLYoJuiGyg" status="IMPLICIT" sissyId="17" visibility="VISIBILITYPRIVAT" simpleName="&lt;self>" const="false">
+      <position endColumn="-1" startColumn="-1" endLine="-1" startLine="-1"/>
+      <typeDeclaration id="_wpXT04SDEea2PLYoJuiGyg" status="IMPLICIT" sissyId="18" accessedTarget="_wo6n1YSDEea2PLYoJuiGyg">
+        <position endColumn="-1" startColumn="-1" endLine="-1" startLine="-1"/>
+      </typeDeclaration>
+    </self>
+  </types>
+  <types xsi:type="types:GASTClass" id="_wo6n1oSDEea2PLYoJuiGyg" status="IMPLICIT" sissyId="19" visibility="VISIBILITYPACKAGE" simpleName="void" primitive="true">
+    <self id="_wpXT0ISDEea2PLYoJuiGyg" status="IMPLICIT" sissyId="20" visibility="VISIBILITYPRIVAT" simpleName="&lt;self>" const="false">
+      <position endColumn="-1" startColumn="-1" endLine="-1" startLine="-1"/>
+      <typeDeclaration id="_wpXT0YSDEea2PLYoJuiGyg" status="IMPLICIT" sissyId="21" accessedTarget="_wo6n1oSDEea2PLYoJuiGyg">
+        <position endColumn="-1" startColumn="-1" endLine="-1" startLine="-1"/>
+      </typeDeclaration>
+    </self>
+  </types>
+  <types xsi:type="types:GASTClass" id="_wo6n14SDEea2PLYoJuiGyg" status="IMPLICIT" sissyId="22" visibility="VISIBILITYPACKAGE" simpleName="double" primitive="true">
+    <self id="_wpXTzoSDEea2PLYoJuiGyg" status="IMPLICIT" sissyId="23" visibility="VISIBILITYPRIVAT" simpleName="&lt;self>" const="false">
+      <position endColumn="-1" startColumn="-1" endLine="-1" startLine="-1"/>
+      <typeDeclaration id="_wpXTz4SDEea2PLYoJuiGyg" status="IMPLICIT" sissyId="24" accessedTarget="_wo6n14SDEea2PLYoJuiGyg">
+        <position endColumn="-1" startColumn="-1" endLine="-1" startLine="-1"/>
+      </typeDeclaration>
+    </self>
+  </types>
+  <types xsi:type="types:GASTClass" id="_wo6n2ISDEea2PLYoJuiGyg" status="IMPLICIT" sissyId="25" visibility="VISIBILITYPACKAGE" simpleName="boolean" primitive="true">
+    <self id="_wpXTzISDEea2PLYoJuiGyg" status="IMPLICIT" sissyId="26" visibility="VISIBILITYPRIVAT" simpleName="&lt;self>" const="false">
+      <position endColumn="-1" startColumn="-1" endLine="-1" startLine="-1"/>
+      <typeDeclaration id="_wpXTzYSDEea2PLYoJuiGyg" status="IMPLICIT" sissyId="27" accessedTarget="_wo6n2ISDEea2PLYoJuiGyg">
+        <position endColumn="-1" startColumn="-1" endLine="-1" startLine="-1"/>
+      </typeDeclaration>
+    </self>
+  </types>
+  <basePaths id="_wow21oSDEea2PLYoJuiGyg" path="">
+    <directories id="_wow21YSDEea2PLYoJuiGyg" simpleName="/"/>
+    <directories id="_wow214SDEea2PLYoJuiGyg" simpleName="UnknownDirectory"/>
+    <directories id="_wow22YSDEea2PLYoJuiGyg" simpleName="FILE:C:">
+      <subDirectory id="_wow22oSDEea2PLYoJuiGyg" simpleName="Documents and Settings">
+        <subDirectory id="_wow224SDEea2PLYoJuiGyg" simpleName="true">
+          <subDirectory id="_wow23ISDEea2PLYoJuiGyg" simpleName="workspace_model">
+            <subDirectory id="_wow23YSDEea2PLYoJuiGyg" simpleName="CaseStudy2">
+              <subDirectory id="_wow23oSDEea2PLYoJuiGyg" simpleName="src">
+                <subDirectory id="_wow234SDEea2PLYoJuiGyg" simpleName="com">
+                  <subDirectory id="_wow24ISDEea2PLYoJuiGyg" simpleName="cs">
+                    <subDirectory id="_wow24YSDEea2PLYoJuiGyg" simpleName="tu">
+                      <subDirectory id="_wow24oSDEea2PLYoJuiGyg" simpleName="model">
+                        <files id="_wow22ISDEea2PLYoJuiGyg" sissyId="28" simpleName="Analysis.java" sourceFile="true"/>
+                      </subDirectory>
+                    </subDirectory>
+                  </subDirectory>
+                </subDirectory>
+              </subDirectory>
+            </subDirectory>
+          </subDirectory>
+        </subDirectory>
+      </subDirectory>
+    </directories>
+    <directories id="_wow25ISDEea2PLYoJuiGyg" simpleName="ARCHIVE:C:">
+      <subDirectory id="_wow25YSDEea2PLYoJuiGyg" simpleName="Program Files">
+        <subDirectory id="_wow25oSDEea2PLYoJuiGyg" simpleName="Java">
+          <subDirectory id="_wow254SDEea2PLYoJuiGyg" simpleName="jdk1.7.0_80">
+            <subDirectory id="_wow26ISDEea2PLYoJuiGyg" simpleName="jre">
+              <subDirectory id="_wow26YSDEea2PLYoJuiGyg" simpleName="lib">
+                <subDirectory id="_wow26oSDEea2PLYoJuiGyg" simpleName="rt.jar?java">
+                  <subDirectory id="_wow264SDEea2PLYoJuiGyg" simpleName="lang">
+                    <files id="_wow244SDEea2PLYoJuiGyg" status="LIBRARY" sissyId="56" simpleName="Object.class"/>
+                  </subDirectory>
+                </subDirectory>
+              </subDirectory>
+            </subDirectory>
+          </subDirectory>
+        </subDirectory>
+      </subDirectory>
+    </directories>
+  </basePaths>
+</core:Root>

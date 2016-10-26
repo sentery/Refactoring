@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/com.cs.tu.FindRefactor/src" modelPluginID="com.cs.tu.FindRefactor"
+    modelName="Gastm" importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0"
+    copyrightFields="false">
+  <foreignModel>gastm.ecore</foreignModel>
+  <genPackages prefix="Gast" disposableProviderFactory="true" ecorePackage="gastm.ecore#/">
+    <nestedGenPackages prefix="Statements" resource="XML" disposableProviderFactory="true"
+        ecorePackage="gastm.ecore#//statements">
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="gastm.ecore#//statements/LoopStatementKind">
+        <genEnumLiterals ecoreEnumLiteral="gastm.ecore#//statements/LoopStatementKind/FOREACH"/>
+        <genEnumLiterals ecoreEnumLiteral="gastm.ecore#//statements/LoopStatementKind/WHILE"/>
+        <genEnumLiterals ecoreEnumLiteral="gastm.ecore#//statements/LoopStatementKind/DOWHILE"/>
+        <genEnumLiterals ecoreEnumLiteral="gastm.ecore#//statements/LoopStatementKind/FOR"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="gastm.ecore#//statements/JumpStatementKind">
+        <genEnumLiterals ecoreEnumLiteral="gastm.ecore#//statements/JumpStatementKind/JUMP"/>
+        <genEnumLiterals ecoreEnumLiteral="gastm.ecore#//statements/JumpStatementKind/RETURN"/>
+        <genEnumLiterals ecoreEnumLiteral="gastm.ecore#//statements/JumpStatementKind/THROW"/>
+      </genEnums>
+      <genClasses ecoreClass="gastm.ecore#//statements/ExceptionHandler">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//statements/ExceptionHandler/catchBlocks"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//statements/ExceptionHandler/finallyBlock"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//statements/ExceptionHandler/guardedBlock"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="gastm.ecore#//statements/Statement">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//statements/Statement/accesses"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//statements/Statement/cloneInstance"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//statements/Statement/blockstatement"/>
+        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//statements/Statement/surroundingStatement"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//statements/Statement/numberOfStatements"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//statements/Statement/maximumNestingLevel"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//statements/Statement/numberOfComments"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//statements/Statement/linesOfCode"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//statements/Statement/numberOfEdgesInCFG"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//statements/Statement/numberOfNodesInCFG"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//statements/Statement/branch"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//statements/Statement/loopstatement"/>
+      </genClasses>
+      <genClasses ecoreClass="gastm.ecore#//statements/BlockStatement">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//statements/BlockStatement/synchronized"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//statements/BlockStatement/statements"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//statements/BlockStatement/surroundingFunction"/>
+      </genClasses>
+      <genClasses ecoreClass="gastm.ecore#//statements/Branch">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//statements/Branch/conditionExpression"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//statements/Branch/branchstatement"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//statements/Branch/statement"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="gastm.ecore#//statements/GASTExpression"/>
+      <genClasses ecoreClass="gastm.ecore#//statements/BranchStatement">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//statements/BranchStatement/branches"/>
+      </genClasses>
+      <genClasses ecoreClass="gastm.ecore#//statements/LoopStatement">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//statements/LoopStatement/kind"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//statements/LoopStatement/breakConditionExpression"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//statements/LoopStatement/initExpression"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//statements/LoopStatement/incrementExpression"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//statements/LoopStatement/body"/>
+      </genClasses>
+      <genClasses ecoreClass="gastm.ecore#//statements/CatchBlock">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//statements/CatchBlock/catchParameter"/>
+      </genClasses>
+      <genClasses ecoreClass="gastm.ecore#//statements/JumpStatement">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//statements/JumpStatement/kind"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//statements/JumpStatement/expression"/>
+      </genClasses>
+      <genClasses ecoreClass="gastm.ecore#//statements/SimpleStatement">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//statements/SimpleStatement/expression"/>
+      </genClasses>
+      <genClasses ecoreClass="gastm.ecore#//statements/GASTBehaviour">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference gastm.ecore#//statements/GASTBehaviour/blockstatement"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Core" resource="XML" disposableProviderFactory="true"
+        ecorePackage="gastm.ecore#//core">
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="gastm.ecore#//core/Status">
+        <genEnumLiterals ecoreEnumLiteral="gastm.ecore#//core/Status/NORMAL"/>
+        <genEnumLiterals ecoreEnumLiteral="gastm.ecore#//core/Status/LIBRARY"/>
+        <genEnumLiterals ecoreEnumLiteral="gastm.ecore#//core/Status/IMPLICIT"/>
+        <genEnumLiterals ecoreEnumLiteral="gastm.ecore#//core/Status/FAILEDDEP"/>
+      </genEnums>
+      <genClasses ecoreClass="gastm.ecore#//core/BasePath">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//core/BasePath/root"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//core/BasePath/path"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//core/BasePath/directories"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="gastm.ecore#//core/ModelElement">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//core/ModelElement/annotations"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//core/ModelElement/status"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//core/ModelElement/sissyId"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="gastm.ecore#//core/Identifier">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//core/Identifier/id"/>
+        <genOperations ecoreOperation="gastm.ecore#//core/Identifier/idHasToBeUnique">
+          <genParameters ecoreParameter="gastm.ecore#//core/Identifier/idHasToBeUnique/diagnostics"/>
+          <genParameters ecoreParameter="gastm.ecore#//core/Identifier/idHasToBeUnique/context"/>
+        </genOperations>
+      </genClasses>
+      <genClasses image="false" ecoreClass="gastm.ecore#//core/NamedModelElement">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//core/NamedModelElement/simpleName"/>
+      </genClasses>
+      <genClasses ecoreClass="gastm.ecore#//core/Package">
+        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//core/Package/allLocalClasses"/>
+        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//core/Package/allInnerClasses"/>
+        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//core/Package/allNormalClasses"/>
+        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//core/Package/allInterfaces"/>
+        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//core/Package/allAccesses"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//core/Package/delegates"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//core/Package/globalFunctions"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//core/Package/globalVariables"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//core/Package/root"/>
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//core/Package/linesOfComments"/>
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//core/Package/linesOfCode"/>
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//core/Package/qualifiedName"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//core/Package/classes"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//core/Package/subPackages"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//core/Package/surroundingPackage"/>
+        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//core/Package/allAccessedPackages"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//core/Package/typeAliases"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="gastm.ecore#//core/GenericEntity">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//core/GenericEntity/typeParameters"/>
+      </genClasses>
+      <genClasses ecoreClass="gastm.ecore#//core/Root">
+        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//core/Root/allAccesses"/>
+        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//core/Root/allInnerClasses"/>
+        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//core/Root/allInterfaces"/>
+        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//core/Root/allLocalClasses"/>
+        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//core/Root/allNormalClasses"/>
+        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//core/Root/allModelElements"/>
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//core/Root/linesOfComments"/>
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//core/Root/linesOfCode"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//core/Root/globalVariables"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//core/Root/packages"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//core/Root/clones"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//core/Root/structuralAbstractions"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//core/Root/types"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//core/Root/danglingModelElements"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//core/Root/basePaths"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//core/Root/globalFunctions"/>
+        <genOperations ecoreOperation="gastm.ecore#//core/Root/getPackageByName">
+          <genParameters ecoreParameter="gastm.ecore#//core/Root/getPackageByName/name"/>
+        </genOperations>
+        <genOperations ecoreOperation="gastm.ecore#//core/Root/getPackageByQualifiedName">
+          <genParameters ecoreParameter="gastm.ecore#//core/Root/getPackageByQualifiedName/qualifiedName"/>
+        </genOperations>
+      </genClasses>
+      <genClasses ecoreClass="gastm.ecore#//core/Directory">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//core/Directory/fullQualifiedPath"/>
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//core/Directory/fileSystemPath"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//core/Directory/subDirectory"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//core/Directory/parentDirectory"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//core/Directory/files"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//core/Directory/basePath"/>
+      </genClasses>
+      <genClasses ecoreClass="gastm.ecore#//core/File">
+        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//core/File/root"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//core/File/sourceFile"/>
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//core/File/assemblyFile"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference gastm.ecore#//core/File/importedTypes"/>
+        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//core/File/types"/>
+        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//core/File/globalVariables"/>
+        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//core/File/globalFunctions"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//core/File/linesOfCode"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//core/File/size"/>
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//core/File/fullQualifiedPath"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference gastm.ecore#//core/File/importedGlobalFunctions"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference gastm.ecore#//core/File/importedGlobalVariables"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference gastm.ecore#//core/File/importedPackages"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference gastm.ecore#//core/File/includedFiles"/>
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//core/File/fileSystemPath"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//core/File/directory"/>
+      </genClasses>
+      <genClasses ecoreClass="gastm.ecore#//core/Position">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//core/Position/endColumn"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//core/Position/startColumn"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//core/Position/endLine"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//core/Position/startLine"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference gastm.ecore#//core/Position/sourceFile"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference gastm.ecore#//core/Position/assembly"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//core/Position/sourceentity"/>
+        <genOperations ecoreOperation="gastm.ecore#//core/Position/EitherAssemblyFileOrSourceFileSet">
+          <genParameters ecoreParameter="gastm.ecore#//core/Position/EitherAssemblyFileOrSourceFileSet/diagnostics"/>
+          <genParameters ecoreParameter="gastm.ecore#//core/Position/EitherAssemblyFileOrSourceFileSet/context"/>
+        </genOperations>
+      </genClasses>
+      <genClasses ecoreClass="gastm.ecore#//core/PackageAlias">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference gastm.ecore#//core/PackageAlias/aliasedPackage"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="gastm.ecore#//core/SourceEntity">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//core/SourceEntity/position"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Annotations" resource="XML" disposableProviderFactory="true"
+        ecorePackage="gastm.ecore#//annotations">
+      <genClasses ecoreClass="gastm.ecore#//annotations/Attribute"/>
+      <genClasses ecoreClass="gastm.ecore#//annotations/Clone">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//annotations/Clone/cloneInstances"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//annotations/Clone/root"/>
+      </genClasses>
+      <genClasses ecoreClass="gastm.ecore#//annotations/CloneInstance">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//annotations/CloneInstance/statements"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//annotations/CloneInstance/clone"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="gastm.ecore#//annotations/StructuralAbstraction"/>
+      <genClasses ecoreClass="gastm.ecore#//annotations/Comment">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//annotations/Comment/todo"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//annotations/Comment/formal"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//annotations/Comment/todoCount"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//annotations/Comment/texts"/>
+        <genOperations ecoreOperation="gastm.ecore#//annotations/Comment/OCLtodo">
+          <genParameters ecoreParameter="gastm.ecore#//annotations/Comment/OCLtodo/diagnostics"/>
+          <genParameters ecoreParameter="gastm.ecore#//annotations/Comment/OCLtodo/context"/>
+        </genOperations>
+      </genClasses>
+      <genClasses ecoreClass="gastm.ecore#//annotations/Subsystem"/>
+      <genClasses ecoreClass="gastm.ecore#//annotations/Layer"/>
+      <genClasses image="false" ecoreClass="gastm.ecore#//annotations/ModelAnnotation"/>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Types" resource="XML" disposableProviderFactory="true"
+        ecorePackage="gastm.ecore#//types">
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="gastm.ecore#//types/Visibilities">
+        <genEnumLiterals ecoreEnumLiteral="gastm.ecore#//types/Visibilities/VISIBILITYSTRICTPROTECTED"/>
+        <genEnumLiterals ecoreEnumLiteral="gastm.ecore#//types/Visibilities/VISIBILITYPUBLIC"/>
+        <genEnumLiterals ecoreEnumLiteral="gastm.ecore#//types/Visibilities/VISIBILITYPACKAGE"/>
+        <genEnumLiterals ecoreEnumLiteral="gastm.ecore#//types/Visibilities/VISIBILITYPROTECTED"/>
+        <genEnumLiterals ecoreEnumLiteral="gastm.ecore#//types/Visibilities/VISIBILITYPRIVAT"/>
+      </genEnums>
+      <genClasses ecoreClass="gastm.ecore#//types/Reference">
+        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//types/Reference/referencedType"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//types/Reference/explicit"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="gastm.ecore#//types/TypeDecorator">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference gastm.ecore#//types/TypeDecorator/decoratedType"/>
+        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//types/TypeDecorator/undecoratedType"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="gastm.ecore#//types/GASTType">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//types/GASTType/qualifiedName"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//types/GASTType/referenceType"/>
+      </genClasses>
+      <genClasses ecoreClass="gastm.ecore#//types/GASTArray">
+        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//types/GASTArray/baseType"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//types/GASTArray/dimensions"/>
+      </genClasses>
+      <genClasses ecoreClass="gastm.ecore#//types/TypeAlias">
+        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//types/TypeAlias/aliasedType"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//types/TypeAlias/innerTypeAlias"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//types/TypeAlias/surroundingClass"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//types/TypeAlias/surroundingPackage"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="gastm.ecore#//types/Member">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//types/Member/visibility"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference gastm.ecore#//types/Member/overriddenMember"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//types/Member/abstract"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//types/Member/extern"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//types/Member/final"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//types/Member/internal"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//types/Member/introspectable"/>
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//types/Member/override"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//types/Member/static"/>
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//types/Member/typeParameterClassMember"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//types/Member/virtual"/>
+        <genOperations ecoreOperation="gastm.ecore#//types/Member/getSurroundingClass"/>
+      </genClasses>
+      <genClasses ecoreClass="gastm.ecore#//types/TypeParameterClass">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference gastm.ecore#//types/TypeParameterClass/typeBounds"/>
+      </genClasses>
+      <genClasses ecoreClass="gastm.ecore#//types/GenericClass"/>
+      <genClasses ecoreClass="gastm.ecore#//types/GASTEnumeration"/>
+      <genClasses ecoreClass="gastm.ecore#//types/GASTStruct"/>
+      <genClasses ecoreClass="gastm.ecore#//types/GASTUnion"/>
+      <genClasses ecoreClass="gastm.ecore#//types/GASTClass">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//types/GASTClass/innerTypeAliases"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//types/GASTClass/innerDelegates"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//types/GASTClass/constructors"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//types/GASTClass/destructors"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//types/GASTClass/fields"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//types/GASTClass/methods"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//types/GASTClass/surroundingFunction"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//types/GASTClass/surroundingPackage"/>
+        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//types/GASTClass/superTypes"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//types/GASTClass/linesOfComments"/>
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//types/GASTClass/local"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//types/GASTClass/primitive"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//types/GASTClass/interface"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//types/GASTClass/anonymous"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//types/GASTClass/innerClasses"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//types/GASTClass/surroundingClass"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//types/GASTClass/inheritanceTypeAccesses"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//types/GASTClass/self"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//types/GASTClass/friendClasses"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//types/GASTClass/gastClass"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//types/GASTClass/friendFunctions"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//types/GASTClass/property"/>
+        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//types/GASTClass/allAccesses"/>
+        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//types/GASTClass/allAccessedClasses"/>
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//types/GASTClass/inner"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Accesses" resource="XML" disposableProviderFactory="true"
+        ecorePackage="gastm.ecore#//accesses">
+      <genClasses ecoreClass="gastm.ecore#//accesses/ParameterInstantiationTypeAccess"/>
+      <genClasses image="false" ecoreClass="gastm.ecore#//accesses/TypeAccess">
+        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//accesses/TypeAccess/targetType"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference gastm.ecore#//accesses/TypeAccess/typeArguments"/>
+      </genClasses>
+      <genClasses ecoreClass="gastm.ecore#//accesses/CastTypeAccess"/>
+      <genClasses ecoreClass="gastm.ecore#//accesses/CompositeAccess">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//accesses/CompositeAccess/accesses"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="gastm.ecore#//accesses/BaseAccess">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//accesses/BaseAccess/parentStatement"/>
+        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//accesses/BaseAccess/surroundingStatement"/>
+        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//accesses/BaseAccess/surroundingClass"/>
+        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//accesses/BaseAccess/surroundingFunction"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//accesses/BaseAccess/surroundingCompositeAccess"/>
+      </genClasses>
+      <genClasses ecoreClass="gastm.ecore#//accesses/DeclarationTypeAccess">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//accesses/DeclarationTypeAccess/function"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//accesses/DeclarationTypeAccess/surroundingVariable"/>
+      </genClasses>
+      <genClasses ecoreClass="gastm.ecore#//accesses/ThrowTypeAccess">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//accesses/ThrowTypeAccess/declared"/>
+      </genClasses>
+      <genClasses ecoreClass="gastm.ecore#//accesses/DelegateAccess">
+        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//accesses/DelegateAccess/accessedFunctions"/>
+        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//accesses/DelegateAccess/accessedDelegate"/>
+      </genClasses>
+      <genClasses ecoreClass="gastm.ecore#//accesses/FunctionAccess">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference gastm.ecore#//accesses/FunctionAccess/typeArguments"/>
+        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//accesses/FunctionAccess/targetFunction"/>
+      </genClasses>
+      <genClasses ecoreClass="gastm.ecore#//accesses/InheritanceTypeAccess">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//accesses/InheritanceTypeAccess/implementationInheritance"/>
+      </genClasses>
+      <genClasses ecoreClass="gastm.ecore#//accesses/VariableAccess">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//accesses/VariableAccess/write"/>
+        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//accesses/VariableAccess/targetVariable"/>
+      </genClasses>
+      <genClasses ecoreClass="gastm.ecore#//accesses/RunTimeTypeAccess"/>
+      <genClasses ecoreClass="gastm.ecore#//accesses/SelfAccess">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//accesses/SelfAccess/super"/>
+      </genClasses>
+      <genClasses ecoreClass="gastm.ecore#//accesses/StaticTypeAccess"/>
+      <genClasses ecoreClass="gastm.ecore#//accesses/PropertyAccess"/>
+      <genClasses image="false" ecoreClass="gastm.ecore#//accesses/Access">
+        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//accesses/Access/accessedClass"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference gastm.ecore#//accesses/Access/accessedTarget"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Functions" resource="XML" disposableProviderFactory="true"
+        ecorePackage="gastm.ecore#//functions">
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="gastm.ecore#//functions/GlobalFunctionKind">
+        <genEnumLiterals ecoreEnumLiteral="gastm.ecore#//functions/GlobalFunctionKind/NORMAL"/>
+        <genEnumLiterals ecoreEnumLiteral="gastm.ecore#//functions/GlobalFunctionKind/UNITINITIALIZER"/>
+        <genEnumLiterals ecoreEnumLiteral="gastm.ecore#//functions/GlobalFunctionKind/UNITFINALIZER"/>
+      </genEnums>
+      <genClasses ecoreClass="gastm.ecore#//functions/Delegate">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//functions/Delegate/innerDelegate"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference gastm.ecore#//functions/Delegate/superClass"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference gastm.ecore#//functions/Delegate/invocations"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//functions/Delegate/surroundingClass"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//functions/Delegate/surroundingPackage"/>
+      </genClasses>
+      <genClasses ecoreClass="gastm.ecore#//functions/Constructor">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//functions/Constructor/initializer"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//functions/Constructor/surroundingClass"/>
+      </genClasses>
+      <genClasses ecoreClass="gastm.ecore#//functions/Destructor">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//functions/Destructor/surroundingClass"/>
+      </genClasses>
+      <genClasses ecoreClass="gastm.ecore#//functions/GenericFunction"/>
+      <genClasses ecoreClass="gastm.ecore#//functions/GlobalFunction">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//functions/GlobalFunction/surroundingPackage"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//functions/GlobalFunction/kind"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//functions/GlobalFunction/root"/>
+      </genClasses>
+      <genClasses ecoreClass="gastm.ecore#//functions/Method">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//functions/Method/propertyMethod"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference gastm.ecore#//functions/Method/surroundingProperty"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//functions/Method/surroundingClass"/>
+      </genClasses>
+      <genClasses ecoreClass="gastm.ecore#//functions/GenericMethod"/>
+      <genClasses ecoreClass="gastm.ecore#//functions/GenericConstructor"/>
+      <genClasses image="false" ecoreClass="gastm.ecore#//functions/Function">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//functions/Function/returnTypeDeclaration"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//functions/Function/formalParameters"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//functions/Function/localVariables"/>
+        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//functions/Function/allStatements"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference gastm.ecore#//functions/Function/throwTypeAccesses"/>
+        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//functions/Function/accesses"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//functions/Function/numberOfStatements"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//functions/Function/maximumNestingLevel"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//functions/Function/linesOfComments"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//functions/Function/linesOfCode"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//functions/Function/numberOfEdgesInCFG"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//functions/Function/numberOfNodesInCFG"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//functions/Function/operator"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//functions/Function/body"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//functions/Function/localClasses"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Variables" resource="XML" disposableProviderFactory="true"
+        ecorePackage="gastm.ecore#//variables">
+      <genClasses ecoreClass="gastm.ecore#//variables/FormalParameter">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//variables/FormalParameter/passedByReference"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//variables/FormalParameter/surroundingFunction"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="gastm.ecore#//variables/Variable">
+        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//variables/Variable/type"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//variables/Variable/const"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference gastm.ecore#//variables/Variable/typeDeclaration"/>
+      </genClasses>
+      <genClasses ecoreClass="gastm.ecore#//variables/CatchParameter">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//variables/CatchParameter/rethrown"/>
+      </genClasses>
+      <genClasses ecoreClass="gastm.ecore#//variables/Field">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute gastm.ecore#//variables/Field/propertyField"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//variables/Field/surroundingClass"/>
+      </genClasses>
+      <genClasses ecoreClass="gastm.ecore#//variables/LocalVariable">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//variables/LocalVariable/surroundingFunction"/>
+      </genClasses>
+      <genClasses ecoreClass="gastm.ecore#//variables/Property">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference gastm.ecore#//variables/Property/setter"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference gastm.ecore#//variables/Property/getter"/>
+      </genClasses>
+      <genClasses ecoreClass="gastm.ecore#//variables/GlobalVariable">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference gastm.ecore#//variables/GlobalVariable/surroundingPackage"/>
+      </genClasses>
+    </nestedGenPackages>
+  </genPackages>
+</genmodel:GenModel>
