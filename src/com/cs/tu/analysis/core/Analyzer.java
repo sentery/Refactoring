@@ -1,7 +1,6 @@
 package com.cs.tu.analysis.core;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -14,12 +13,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
-import org.eclipse.ui.PlatformUI;
-import org.osgi.framework.BundleContext;
-import org.osgi.framework.FrameworkUtil;
-import org.osgi.framework.ServiceReference;
-import org.osgi.service.event.Event;
-import org.osgi.service.event.EventAdmin;
 
 import CFG.AbstractNode;
 import CFG.CFGPackage;
@@ -29,14 +22,15 @@ import CFG.impl.IterativeNodeImpl;
 import CFG.impl.MControlFlowGraphImpl;
 import CFG.impl.NodeImpl;
 
+import com.cs.tu.analysis.model.MethodDetail;
 import com.cs.tu.analysis.model.VarDetail;
 import com.cs.tu.analysis.model.VarPath;
-import com.cs.tu.analysis.views.AnalysisView;
 
 public class Analyzer {
 
-	public void convertXMItoModel(String filePath){
-
+	public List<MethodDetail> convertXMItoModel(String filePath){
+		List<MethodDetail> methodDetailLest = null;
+		List<VarDetail> varDetailList = null;
 		try {
 
 			ResourceSet resourceSet = new ResourceSetImpl();
@@ -51,17 +45,19 @@ public class Analyzer {
 			extensionFactoryMap.put("xmi", new XMIResourceFactoryImpl());
 			//
 			
-			System.out.println(filePath);
 			Resource resource = resourceSet.getResource(
 					URI.createURI(filePath), true);
 
 			// try to load the file into resource
 			List<AbstractNode> nodeList = null;
-			List<VarDetail> varDetailList = null;
+			MethodDetail methodDetail = null;
+			methodDetailLest = new ArrayList<MethodDetail>();
 			for (EObject eObj : resource.getContents()) {
+			
 				
 				MControlFlowGraphImpl mControlFlowGraphImpl = (MControlFlowGraphImpl) eObj;
-
+				methodDetail = new MethodDetail();
+				methodDetail.setMethodName(mControlFlowGraphImpl.getName());
 				EList<Var> localVars = mControlFlowGraphImpl.getLocalVar();
 				if (localVars != null && localVars.size() > 0) {
 					varDetailList = new ArrayList<VarDetail>();
@@ -147,6 +143,7 @@ public class Analyzer {
 							
 							
 							VarDetail varDetail = new VarDetail();
+							varDetail.setVarName(var.getName());
 							if(nodeList != null && nodeList.size() > 0){
 								
 								VarPath varPath = null;
@@ -187,26 +184,15 @@ public class Analyzer {
 						
 						
 						 
-//						AnalysisView analysisView =	(AnalysisView) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView(AnalysisView.ID);
-//						analysisView.setVarDetails(varDetailList);
 						
 						
 						
 					}
-					 BundleContext ctx = FrameworkUtil.getBundle(AnalysisView.class).getBundleContext();
-				        ServiceReference<EventAdmin> ref = ctx.getServiceReference(EventAdmin.class);
-				        EventAdmin eventAdmin = ctx.getService(ref);
-				        Map<String,Object> properties = new HashMap<String, Object>();
-				        properties.put("varsParam", varDetailList);
-				     
-				        Event event = new Event("viewcommunication/syncEvent", properties);
-				        eventAdmin.sendEvent(event);
-				                 
-				        event = new Event("viewcommunication/asyncEvent", properties);
-				        eventAdmin.postEvent(event);
 					
 				}
-
+				
+				methodDetail.setVarDetails(varDetailList);
+				methodDetailLest.add(methodDetail);
 			}
 			
 
@@ -214,6 +200,7 @@ public class Analyzer {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return methodDetailLest;
 
 	}
 

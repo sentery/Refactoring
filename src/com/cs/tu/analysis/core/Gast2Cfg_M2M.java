@@ -54,7 +54,9 @@ public class Gast2Cfg_M2M {
 	*/ 
 	
 	
-	public void transfrom2CFG(IFile file) throws CoreException{
+	public String  transfrom2CFG(IFile file) throws CoreException{
+		
+		String filePath = null;;
 		try { 
 			
 			
@@ -62,20 +64,21 @@ public class Gast2Cfg_M2M {
 		    runner.loadModels(file.getContents()); 
 		    runner.doGAST2CFG_M2M(new NullProgressMonitor()); 
 		 
-		    String filePath = file.getLocation().toPortableString();
+		    filePath = file.getLocation().toPortableString();
 		    filePath = filePath.substring(0, filePath.lastIndexOf("/"));
 		    filePath = "file:///"+filePath+"/dfg.xmi";
 		    runner.saveModels(filePath); 
 		    
-		    Analyzer analyzer = new Analyzer();
-		    analyzer.convertXMItoModel(filePath);
+//		    Analyzer analyzer = new Analyzer();
+//		    analyzer.convertXMItoModel(filePath);
 		  } catch (ATLCoreException e) { 
 		   e.printStackTrace(); 
 		  } catch (IOException e) { 
 		   e.printStackTrace(); 
 		  } catch (ATLExecutionException e) { 
 		   e.printStackTrace(); 
-		  } 
+		  }
+		return filePath; 
 		 
 	}
 	

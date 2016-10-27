@@ -9,12 +9,14 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.ui.ISelectionService;
 import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
 
 import com.cs.tu.analysis.core.Gast2Cfg_M2M;
+import com.cs.tu.analysis.views.AnalysisView;
 
 /**
  * Our sample handler extends AbstractHandler, an IHandler base class.
@@ -49,9 +51,13 @@ public class SampleHandler extends AbstractHandler {
 				// get the path
 				IPath path = file.getLocation();
 				
-				Gast2Cfg_M2M Gast2Cfg_M2M = new Gast2Cfg_M2M();
-				Gast2Cfg_M2M.transfrom2CFG(file);
-//				System.out.println(path.toPortableString());
+				Gast2Cfg_M2M gast2Cfg_M2M = new Gast2Cfg_M2M();
+				String filePath = gast2Cfg_M2M.transfrom2CFG(file);
+				if(filePath != null){
+					AnalysisView analysisView =	(AnalysisView) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView(AnalysisView.ID);
+					analysisView.runAnalysis(filePath);
+				}
+
 			}else{
 				MessageDialog.openInformation(
 						window.getShell(),
