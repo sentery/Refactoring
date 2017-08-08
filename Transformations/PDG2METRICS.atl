@@ -1,0 +1,362 @@
+-- @path MTRIX=/AnalysisCode/Metamodel/metrics.ecore
+-- @path PDG=/AnalysisCode/Metamodel/CFG.ecore
+
+module PDG2METRICS;
+create OUT : MTRIX from IN : PDG;
+
+
+helper context PDG!AbstractNode def : getNBDFromLoopAndCondition() : Sequence(PDG!AbstractNode) =
+	self.nodes->iterate(e; accLoop: Sequence(PDG!AbstractNode) = Sequence{} | 
+				
+				if e.oclIsTypeOf(PDG!ConditionalNode) or e.oclIsTypeOf(PDG!IterativeNode) then
+					--if e.oclIsKindOf(PDG!IterativeNode) then 
+						accLoop.append(e).append(e.getNBDFromLoopAndCondition())
+					--else
+					--accLoop.append(e)
+				--endif
+					
+				else
+					accLoop
+				endif
+				);
+
+
+
+helper def: counter : Integer = 0;
+
+helper context PDG!MControlFlowGraph def : getNBD() : Integer = 
+
+	self.nodes->iterate(e; count: Integer = 0 | 
+				
+	
+				if e.oclIsTypeOf(PDG!ConditionalNode) or e.oclIsTypeOf(PDG!IterativeNode) then					
+					
+					if e.getNBDFromLoopAndCondition().flatten().size() > count then 
+							count  + e.getNBDFromLoopAndCondition().flatten().size()
+						else
+							count+1
+						endif
+					
+
+				else
+					 count
+				endif
+				)
+	;
+
+
+
+helper context PDG!IterativeNode def : getNodeFromIterative : Sequence(PDG!AbstractNode) =
+	self.nodes->iterate(e; accLoop: Sequence(PDG!AbstractNode) = Sequence{} | 
+				
+				if e.oclIsKindOf(PDG!IterativeNode) then
+					
+						accLoop.append(e).append(e.getNodeFromIterative)
+				else
+						if e.oclIsKindOf(PDG!ConditionalNode) then 
+							accLoop.append(e).append(e.getNodeFromCondition)
+						else
+							accLoop.append(e)
+						endif
+				endif
+				);
+helper context PDG!ConditionalNode def : getNodeFromCondition : Sequence(PDG!AbstractNode) =
+	self.nodes->iterate(e; accCon: Sequence(PDG!AbstractNode) = Sequence{} | 
+				
+				if e.oclIsKindOf(PDG!IterativeNode) then
+					
+						accCon.append(e.getNodeFromIterative)
+				else
+						if e.oclIsKindOf(PDG!ConditionalNode) then 
+							accCon.append(e).append(e.getNodeFromCondition)
+						else
+							accCon.append(e)
+						endif
+				endif
+				);
+
+helper context PDG!MControlFlowGraph def : getMLOC() : Sequence(PDG!AbstractNode) = 
+	self.nodes.asSequence()->iterate(e; acc: Sequence(PDG!AbstractNode) = Sequence{} |
+	
+	if e.oclIsTypeOf(PDG!Node) then 
+		acc.append(e)
+	else
+		if e.oclIsTypeOf(PDG!IterativeNode) then
+			acc.append(e).append(e.getNodeFromIterative)
+		else
+			if e.oclIsTypeOf(PDG!ConditionalNode) then
+				acc.append(e).append(e.getNodeFromCondition)
+			else
+				acc.append(e)
+				endif
+		endif
+	endif
+	
+)->flatten().size();
+
+helper context PDG!Var def : isRTQW : Boolean = 
+
+	if self.du = 1 then
+		if self.cu > 0 or self.pu > 0 then
+			true
+		else
+			false
+		endif
+	
+	else
+		false
+	endif;
+	
+
+
+
+helper context PDG!MClass def : getNumberMethodUseInstant : Sequence(PDG!MControlFlowGraph) =
+
+self.instatVars.asSequence()->iterate(e; acc: Sequence(PDG!MControlFlowGraph) = Sequence{} |
+
+		acc.append(e.accessMethod)
+	
+);
+
+helper context PDG!MClass def : getLCOM : Real = 
+	
+	let lcom : Real = 0
+	in
+	((((1/(self.instatVars->reject(v | v.isStatic = true)).size())*self.getNumberMethodUseInstant.flatten().size())
+	-self.Method.size()) / (1-self.Method.size())		
+	
+);
+
+
+
+
+helper context PDG!IterativeNode def : getNodeFromIterativeNode : Sequence(PDG!AbstractNode) =
+	self.nodes->iterate(n; acn: Sequence(PDG!AbstractNode) = Sequence{} |
+	
+	if n.oclIsTypeOf(PDG!Node) then
+		acn.append(n)
+	else
+		if n.oclIsTypeOf(PDG!ConditionalNode) then
+			acn.append(n).append(n.getNodeFromConditionNode)
+		else
+			acn.append(n).append(n.getNodeFromIterativeNode)
+		endif
+	endif
+	);
+	
+
+helper context PDG!ConditionalNode def : getNodeFromConditionNode : Sequence(PDG!AbstractNode) =
+	self.nodes->iterate(n; acn: Sequence(PDG!AbstractNode) = Sequence{} |
+	
+	if n.oclIsTypeOf(PDG!Node) then
+		acn.append(n)
+	else
+		if n.oclIsTypeOf(PDG!ConditionalNode) then
+			acn.append(n).append(n.getNodeFromConditionNode)
+		else
+			acn.append(n).append(n.getNodeFromIterativeNode)
+		endif
+	endif
+	);
+	
+	
+helper context PDG!MControlFlowGraph def :getNodeFromCFG : Sequence(PDG!AbstractNode) = 
+	self.nodes->iterate(n; acn: Sequence(PDG!AbstractNode) = Sequence{} |
+	
+	if n.oclIsTypeOf(PDG!Node) then
+		acn.append(n)
+	else
+		if n.oclIsTypeOf(PDG!ConditionalNode) then
+			acn.append(n).append(n.getNodeFromConditionNode)
+		else
+			acn.append(n).append(n.getNodeFromIterativeNode)
+		endif
+	endif
+);
+
+
+--
+--helper context PDG!IterativeNode def : getEdgeFromIterativeNode : Integer =
+--	self.nodes->iterate(n; res: Integer = 0 |
+--	
+--	if n.oclIsTypeOf(PDG!Node) then
+--		res + 1
+--	else
+--		if n.oclIsTypeOf(PDG!ConditionalNode) then
+--			
+--			res + n.getEdgeFromConditionNode
+--		else
+--			res + n.getEdgeFromIterativeNode
+--		endif
+--	endif
+--	);
+--
+--
+--
+--
+--	
+--	
+--	
+--helper context PDG!ConditionalNode def : getEdgeFromConditionNode : Integer =
+--	self.nodes->iterate(n; res: Integer = 0 |
+--	
+--	if n.oclIsTypeOf(PDG!Node) then
+--		res + 1
+--	else
+--		if n.oclIsTypeOf(PDG!ConditionalNode) then
+--			res + n.getEdgeFromConditionNode
+--		else
+--			res + n.getEdgeFromIterativeNode
+--		endif
+--	endif
+--	);
+--
+--
+----helper context PDG!Node def : getNextFromNode : Integer = 
+----	let x : Integer = 0 in
+----	
+----		if self.oclIsTypeOf(PDG!Node) then 
+----			if not self.toNode.oclIsUndefined()
+----			x+1
+----		else
+----			
+----		endif;
+--
+--
+--helper context PDG!AbstractNode def : getNextEdge : Integer = 
+--	let x : Integer = 0 in 
+--	
+--		
+--		if	self.oclIsTypeOf(PDG!Node) then
+--			if not self.toNode.oclIsUndefined() then
+--				x+1+self.toNode.getNextEdge
+--			else
+--				x
+--			endif
+--		else
+--			if	self.oclIsTypeOf(PDG!IterativeNode) then
+--			
+--				if not self.falseConditionNode.oclIsUndefined() then
+--					x+2+self.falseConditionNode.getNextEdge
+--				else
+--					x+1+self.trueConditionNode.getNextEdge
+--				endif
+--			else
+--				
+--			
+--				if not self.falseConditionNode.oclIsUndefined() then
+--					x+2+self.falseConditionNode.getNextEdge
+--				else
+--					x+1+self.trueConditionNode.getNextEdge
+--				endif
+--	endif
+--endif
+--	;
+--
+--helper context PDG!MControlFlowGraph def :getNumberOfEdgeFromCFG :Integer =
+--	
+--	if not self.nodes.first().oclIsUndefined() then
+--		self.nodes.first().getNextEdge
+--	else
+--		0
+--	endif
+----	let x : Integer = 0 in 
+----	
+----	if self.nodes.size() > 2 then
+----		
+----		if	self.nodes.first().oclIsTypeOf(PDG!Node) then
+----			if not self.nodes.first().toNode.oclIsUndefined() then
+----				x+1
+----			else
+----				x
+----			endif
+----		else
+----			x
+----		endif
+----	
+----	
+----	else
+----		x
+----	endif
+--	;
+--
+
+
+
+helper context PDG!MControlFlowGraph def :getVG :Integer = 
+
+	self.getNodeFromCFG.flatten()->reject(r | r.oclIsTypeOf(PDG!Node))->
+	
+	iterate(n; acc:  Integer = 0 |
+		if n.oclIsTypeOf(PDG!ConditionalNode) then 
+			if n.kind = 'switch' then  -- switch case to countingcase
+				acc + (n.nodes.size())
+			else
+				acc + 1  -- if/then
+			endif
+		else
+				acc + 1 -- // loop
+		endif
+)+1;
+
+
+rule MClass2MClass {
+	from
+		s : PDG!MClass
+	to 
+		t : MTRIX!MClass (
+			name <- s.name.debug(),
+			methods <- s.Method
+			,
+			LCOM <- s.getLCOM.toString()		
+			
+		)
+		do {
+	s.getNumberMethodUseInstant.flatten().size().debug();
+}
+		
+
+}
+
+
+rule MMethod2MMethod {
+	from
+		s : PDG!MControlFlowGraph
+	to 
+		t : MTRIX!MMethod (
+			name <- s.name.debug(),
+			MLOC <- s.getMLOC().toString(),
+			VG <- s.getVG.toString(),
+			NBD <- s.getNBD().toString(),
+			PAR <- s.param.size().toString(),
+			vars <- s.localVar
+			)
+			
+			do {
+	
+	
+}
+}
+
+rule Var2Var {
+	from
+		s : PDG!Var
+	to 
+		t : MTRIX!Var (
+			name <- s.name,
+			type <- if not s.type.oclIsUndefined() then
+						s.type
+						else
+							'notype'
+						endif
+		)
+}
+
+--rule Param2Var {
+--	from
+--		s : PDG!Param
+--	to 
+--		t : MTRIX!Param (
+--			type <- s.type
+--		)
+--}

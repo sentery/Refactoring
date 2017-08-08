@@ -1,0 +1,500 @@
+
+-- @path PDG=/AnalysisCode/Metamodel/CFG.ecore
+-- @path GAST=/AnalysisCode/Metamodel/gast.ecore
+
+
+module GAST2PDG;
+create OUT: PDG from IN: GAST;
+
+helper context GAST!BlockStatement def: getMap(): Map(GAST!Statement, GAST!Statement) =
+	self.statements -> iterate(e; acc: TupleType(prev: GAST!Statement, map:
+			Map(GAST!Statement, GAST!Statement)) = Tuple{prev = Sequence {} -> first(),
+			map = Map{}} | Tuple{prev = e, map = if acc.prev.oclIsUndefined() then
+						acc.map
+					else
+						acc.map.including(acc.prev, e)
+					endif}).map;
+
+helper def: next: Map(GAST!Statement, GAST!Statement) =
+	GAST!BlockStatement.allInstances() -> asSequence() -> iterate(e; acc:
+			Map(GAST!Statement, GAST!Statement) = Map {} | acc.union(e.getMap()));
+
+helper context GAST!Statement def: next: GAST!Statement =
+	thisModule.next.get(self);
+
+--------------------------------------------------------------------------------------
+--data flow
+helper def: getDfFromBranch(var: GAST!LocalVariable, bra: Sequence(GAST!Branch)):
+		Sequence(GAST!Statement) =
+	if not bra.oclIsUndefined() then
+		bra -> iterate(e; accBranch: Sequence(GAST!Statement) = Sequence{} | e.statement.
+				accesses -> iterate(e1; acc1: Sequence(GAST!Statement) = Sequence{} | if
+				e1.oclIsKindOf(GAST!VariableAccess) then
+					if e1.accessedTarget = var then
+						accBranch.append(e.statement)
+					else
+						accBranch
+					endif
+				else
+					accBranch
+				endif))
+	else
+		Sequence{}
+	endif;
+
+helper context GAST!BranchStatement def: getDfFromBranchStmt(var: GAST!LocalVariable):
+		Sequence(GAST!Statement) =
+	--	if not self.accesses.oclIsUndefined() then
+	self.accesses -> iterate(e1; acc1: Sequence(GAST!Statement) = Sequence{} | if e1.
+			oclIsKindOf(GAST!VariableAccess) then
+			if e1.accessedTarget = var then
+				acc1.append(self)
+			else
+				acc1
+			endif
+		else
+			acc1
+		endif) --	else
+
+;
+
+helper def: getDfFromAccess(acc: GAST!BaseAccess,var: GAST!LocalVariable):
+		Sequence(GAST!Statement) =
+	acc -> iterate(e; acc: Sequence(GAST!Statement) = Sequence{} | if e.
+			oclIsTypeOf(GAST!VariableAccess) then
+			if e.accessedTarget = var then
+				acc.append(e)
+			else
+				acc --
+				
+			endif
+		else
+			acc
+		endif);
+helper context GAST!LoopStatement def: getDfFromLoop(var: GAST!LocalVariable):Sequence(GAST!Statement) =
+	
+	self.body.statements -> iterate(e; accLoop: Sequence(GAST!Statement) = Sequence{} |
+			if e.oclIsKindOf(GAST!SimpleStatement) or e.oclIsKindOf(GAST!JumpStatement)then
+			--		acc.including(e.getDfFromSimpleAndJump(var))
+			accLoop.append(e.getDfFromSimpleAndJump(var))
+		else
+			if e.oclIsKindOf(GAST!BranchStatement) then
+				--				accLoop.append(e.getDfFromBranchStmt(var))
+				accLoop.append(e.getDfFromBranchStmt(var)).append(thisModule.
+						getDfFromBranch(var, e.branches))
+			else
+				accLoop.append(e.getDfFromLoop(var))
+			endif
+		endif --	e.oclType().debug()
+		).append(thisModule.getDfFromAccess(self.accesses, var));
+
+
+
+helper context GAST!Statement def: getDfFromSimpleAndJump(var: GAST!LocalVariable):
+		Sequence(GAST!Statement) =
+	self.accesses -> iterate(e; acc: Sequence(GAST!Statement) = Sequence{} | if e.
+			oclIsTypeOf(GAST!VariableAccess) then
+			if e.accessedTarget = var then
+				acc.append(self)
+			else
+				acc --
+				
+			endif
+		else
+			acc
+		endif);
+
+helper def: getNextFromBlock(var: GAST!LocalVariable, stmt: Sequence(GAST!Statement)):
+		Sequence(GAST!Statement) =
+	stmt -> iterate(el; accl: Sequence(GAST!Statement) = Sequence{} | if el.
+			oclIsKindOf(GAST!SimpleStatement) or el.oclIsKindOf(GAST!JumpStatement) then
+			accl.append(el.getDfFromSimpleAndJump(var))
+		else
+			if el.oclIsKindOf(GAST!LoopStatement) then
+				accl.append(el.getDfFromLoop(var))
+			else
+				if el.oclIsKindOf(GAST!BranchStatement) then 
+ --					accl.append(thisModule.getDfFromBranch(var, el.branches))
+					accl.append(el.getDfFromBranchStmt(var)).append(thisModule.
+							getDfFromBranch(var, el.branches))
+					else
+						accl
+					endif
+			endif
+		endif);
+
+helper def: getNext(var: GAST!LocalVariable): Sequence(GAST!Statement) =
+	GAST!BlockStatement.allInstances() -> asSequence() -> iterate(e; accRes:
+			Sequence(GAST!Statement) = Sequence {} |
+			accRes.append(thisModule.getNextFromBlock(var,
+			e.statements)).flatten()
+			--			accRes.including(thisModule.getNextFromBlock(var, e.statements))
+		);
+
+helper context GAST!Method def: getFiledFromMethod(f: GAST!Field):Sequence(GAST!Statement) =
+	--	self.localVariables->iterate(loc; accLoc: Sequence(GAST!Statement)=  Sequence
+			-- {} |
+	if not self.body.oclIsUndefined() then
+		thisModule.getNextFromBlock(f, self.body.statements).flatten()
+	else
+		Sequence{}
+	endif;
+
+--);
+-- end data flow
+-- filed access
+helper def: getAllMethod(methods: Sequence(GAST!Method), f: GAST!Field): Sequence(GAST!Statement) =
+	methods -> iterate(c; accC: Sequence(GAST!Method) = Sequence{} | 
+	if c.getFiledFromMethod(f).size() > 0 then
+			accC.append(c)
+		else
+			accC
+		endif);
+
+helper def: getFromConstructor(constructors: Sequence(GAST!Constructor), f: GAST!Field):
+		Sequence(GAST!Statement) =
+	constructors -> iterate(c; accC: Sequence(GAST!Method) = Sequence{} | if not c.body.
+			oclIsUndefined() then
+			if thisModule.getNextFromBlock(f, c.body.statements).flatten().size() > 0 then
+				accC.append(c)
+			else
+				accC
+			endif
+		else
+			Sequence{}
+		endif);
+
+helper context GAST!GASTClass def: getMethodUseInstant: Sequence(GAST!Method) =
+	self.fields -> iterate(f; accF: Sequence(GAST!Method) = Sequence{} | 
+	accF.append(thisModule.getAllMethod(self.methods, f)).append(thisModule.
+			getFromConstructor(self.constructors -> select(s | s.simpleName = self.
+			simpleName), f)));
+
+helper context GAST!GASTClass def: getAllMethodAndConstructor: Sequence(GAST!Method) =
+	self.methods.append(self.constructors -> select(c | c.simpleName = self.simpleName));
+
+
+
+helper context GAST!LocalVariable def: getDu: Integer =
+	thisModule.getNext(self) -> iterate(e; accS: Sequence(GAST!Statement) = Sequence{} |
+			if not e.oclIsTypeOf(GAST!BranchStatement) then
+				if e.expression.oclIsTypeOf(GAST!IntLiteral) or e.expression.
+						oclIsTypeOf(GAST!StringLiteral) or e.expression.
+						oclIsTypeOf(GAST!DoubleLiteral) or e.expression.
+						oclIsTypeOf(GAST!CharLiteral) then
+					accS.append(e)
+				else
+					accS
+				endif
+			else
+				''
+			endif).size();
+
+helper def: getAllLoopStmt: Sequence(GAST!Statement) =
+	GAST!LoopStatement.allInstances().asSequence();
+
+
+helper context GAST!SimpleStatement def: chStmtIsInLoopCondition: Sequence(GAST!Statement) =
+	thisModule.getAllLoopStmt.asSequence()->iterate(e; acc: Sequence(GAST!Statement) = Sequence{} |
+
+	if self.position.startLine =  e.position.startLine then
+		
+	
+--			if thisModule.findStmtIsInLoop(e.blockstatement, self) = 0 then 
+				acc.append(e)
+--			else
+--			
+--				acc
+--			endif
+	
+		
+		else
+			acc
+		endif
+		
+);
+
+
+------ start findin method use instant --------------------
+	
+helper def : getAllClass(fil : GAST!Field) : Sequence(GAST!Method)  =
+	GAST!GASTClass.allInstances().asSequence()->iterate(cla; accClass: Sequence(GAST!Method)  = Sequence{} |
+
+	if cla.fields.indexOf(fil) > 0 then 
+	accClass.append(thisModule.getAllMethod(cla.methods, fil))
+	.append(thisModule.getFromConstructor(cla.constructors -> select(s | s.simpleName = cla.simpleName), fil))
+			
+	else
+		accClass
+	endif
+	);
+	
+
+	
+----------------------end method instant	
+
+helper context GAST!Statement def : findLocalStatement : Sequence(GAST!LocalVariable) =
+	self.accesses->select(s | s.oclIsTypeOf(GAST!VariableAccess))->
+	iterate(e; acc:  Sequence(GAST!LocalVariable) = Sequence{} |
+		if e.accessedTarget.oclIsTypeOf(GAST!LocalVariable) then 
+			acc.append(e.accessedTarget)
+		else
+			acc
+		endif
+);
+
+
+
+
+rule ClassToMClass {
+	from
+		s: GAST!GASTClass
+	to
+		t: PDG!MClass (
+			name <- s.simpleName,
+			Method <- s.getAllMethodAndConstructor,
+			instatVars <- s.fields
+		)
+
+}
+
+rule ConstructorToMControlFlowGraph {
+	from
+		s: GAST!Constructor 
+--		(
+--			not s.body.oclIsUndefined()
+--		)
+	to
+		t: PDG!MControlFlowGraph (
+			name <- s.simpleName,
+			nodes <- if not s.body.oclIsUndefined() then
+					s.body.statements
+				else
+					s.body
+				endif,
+			localVar <- s.localVariables,
+			param <- s.formalParameters
+		)
+		do {
+	s.simpleName.debug();
+}
+}
+
+rule MethodToMControlFlowGraph {
+	from
+		s: GAST!Method (
+			not s.body.oclIsUndefined()
+		)
+	to
+		t: PDG!MControlFlowGraph (
+			name <- s.simpleName,
+			nodes <- if not s.body.oclIsUndefined() then
+					s.body.statements
+				else
+					s.body
+				endif,
+			localVar <- s.localVariables,
+			param <- s.formalParameters
+			)
+					
+}
+
+
+
+
+
+
+abstract rule StatementToNode {
+	from
+		s: GAST!Statement (
+			not s.oclIsKindOf(GAST!BlockStatement)
+		)
+	to
+		t: PDG!AbstractNode (
+
+			dUse <- if not s.accesses.first().oclIsUndefined() and s.accesses.first().
+					oclIsKindOf(GAST!VariableAccess) then
+					s.accesses.first().write.toString()
+				else
+					'false'
+				endif
+				
+		)
+		
+	
+}
+
+rule LoopStatement extends StatementToNode  {
+	from
+		s: GAST!LoopStatement
+	to
+		t: PDG!IterativeNode (
+			trueConditionNode <- s.body.statements.first(),
+			falseConditionNode <- s.next,
+			name <- s.kind.toString(),
+			nodes <- s.body.statements
+		)
+		
+}
+
+rule SimpleStatementToNode extends StatementToNode {
+	from
+		s: GAST!SimpleStatement(s.chStmtIsInLoopCondition.size() = 0)
+	to
+		t: PDG!Node (
+			toNode <- if s.oclIsUndefined() then
+					s.refImmediateComposite().refImmediateComposite()
+				else
+					s.next
+				endif,
+			type <- if s.accesses.size() > 2 then
+					if not s.accesses.first().oclIsUndefined() and s.accesses.first().
+							oclIsKindOf(GAST!VariableAccess) then
+						if s.accesses.first().accessedTarget.typeDeclaration.
+								accessedTarget.simpleName = 'int' or s.accesses.first().
+								accessedTarget.typeDeclaration.accessedTarget.simpleName
+								= 'double' or s.accesses.first().accessedTarget.
+								typeDeclaration.accessedTarget.simpleName = 'float' then
+							'true'
+						else
+							'false'
+						endif
+					else
+						'false'
+					endif
+				else
+					'false'
+				endif
+			
+				
+		)
+		
+}
+rule jumpStatement extends StatementToNode {
+	from
+		s: GAST!JumpStatement
+	to
+		t: PDG!Node (
+			toNode <- if s.oclIsUndefined() then
+					s.refImmediateComposite().refImmediateComposite()
+				else
+					s.next
+				endif,
+			type <- if s.accesses.size() > 2 then
+					if not s.accesses.first().oclIsUndefined() and s.accesses.first().
+							oclIsKindOf(GAST!VariableAccess) then
+						if s.accesses.first().accessedTarget.typeDeclaration.
+								accessedTarget.simpleName = 'int' or s.accesses.first().
+								accessedTarget.typeDeclaration.accessedTarget.simpleName
+								= 'double' or s.accesses.first().accessedTarget.
+								typeDeclaration.accessedTarget.simpleName = 'float' then
+							'true'
+						else
+							'false'
+						endif
+					else
+						'false'
+					endif 
+				else
+					'false'
+				endif
+		)
+}
+
+rule BranchStatement extends StatementToNode{
+	from
+		s: GAST!BranchStatement
+	to
+		t: PDG!ConditionalNode (
+
+			kind  <- if s.branches.size() < 3 then
+						'if'
+					else
+						'switch'
+					endif,
+							
+ trueConditionNode <- s.branches.first().statement,
+			 falseConditionNode <-   s.branches.last().statement
+,
+			nodes <- s.branches -> iterate(e1; acc1: Sequence(GAST!Statement) =Sequence{} |
+			if e1.statement.oclIsKindOf(GAST!Statement) then 
+						if e1.statement.oclIsKindOf(GAST!BlockStatement) then
+							acc1.append(e1.statement.statements)
+						else
+							if e1.statement.oclIsKindOf(GAST!BranchStatement) then
+								if not e1.statement.oclIsUndefined() then
+									acc1.append(e1.statement)
+								else
+									acc1.append(e1.statement)
+								endif
+							else
+								acc1.append(e1.statement)
+							endif
+						endif			
+			else
+				acc1
+			endif
+			
+			)	
+		)
+}
+
+rule InstntToVar {
+	from
+		s: GAST!Field
+	to
+		t: PDG!Var (
+			name <- s.simpleName,
+			type <- s.typeDeclaration.accessedTarget.simpleName,
+			isInstant <- 'true',
+			accessType <- s.visibility.toString(),
+			isStatic <- s.static
+			,accessMethod <- thisModule.getAllClass(s)
+		)
+
+}
+
+rule LocalVariableToVar {
+	from
+		s: GAST!LocalVariable
+	to
+		t: PDG!Var (
+			name <- s.simpleName,
+			type <- s.typeDeclaration.accessedTarget.simpleName,
+			isLocalVar <- 'true',
+			du <- thisModule.getNext(s)->reject(r | not r.oclIsKindOf(GAST!Statement))->
+			iterate(e; accS: Sequence(GAST!Statement) = Sequence{} |
+			
+			if not e.accesses.first().oclIsKindOf(GAST!StaticTypeAccess) then
+					if e.accesses.first().write = true then
+						accS.append(e)
+					else
+						accS
+					endif  
+			else
+				accS
+			endif
+			
+			).size(),
+			pu <- thisModule.getNext(s).flatten()->select(e | e.oclIsKindOf(GAST!BranchStatement)).size(),
+			cu <-   thisModule.getNext(s)->reject(p | p.oclIsTypeOf(GAST!BranchStatement))->
+			reject(a | not a.oclIsKindOf(GAST!Statement))->
+			iterate(e; accS: Sequence(GAST!Statement) = Sequence{} |			
+				if e.accesses->select(x | x.oclIsTypeOf(GAST!VariableAccess)).size() > 1 then
+						accS.append(e)
+				else
+					accS
+				endif).size()			
+		)
+}
+
+rule FormalParam {
+	from
+		s: GAST!FormalParameter
+	to
+		t: PDG!Param (
+			name <- s.simpleName
+		)
+		
+	
+}

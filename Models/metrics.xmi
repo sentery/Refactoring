@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:metrics="http://metrics/1.0">
+  <metrics:MClass name="Movie" LCOM="0.6666666666666666">
+    <methods name="getPriceCode" VG="1" PAR="0" NBD="1"/>
+    <methods name="setPriceCode" VG="1" PAR="1" NBD="1"/>
+    <methods name="getTitle" VG="1" PAR="0" NBD="1"/>
+    <methods name="Movie" VG="1" PAR="2" NBD="1"/>
+  </metrics:MClass>
+  <metrics:MClass name="Rental" LCOM="0.5">
+    <methods name="getDaysRented" VG="1" PAR="0" NBD="1"/>
+    <methods name="getMovie" VG="1" PAR="0" NBD="1"/>
+    <methods name="Rental" VG="1" PAR="2" NBD="1"/>
+  </metrics:MClass>
+  <metrics:MClass name="Customer" LCOM="0.75">
+    <methods name="addRental" VG="1" PAR="1" NBD="1"/>
+    <methods name="getName" VG="1" PAR="0" NBD="1"/>
+    <methods name="statement" VG="3" PAR="0" NBD="3">
+      <vars name="thisAmount" kind="nokind" type="double"/>
+      <vars name="each" kind="nokind" type="Rental"/>
+      <vars name="result" isRTQW="true" kind="nokind" type="String"/>
+      <vars name="rentals" kind="nokind" type="Enumeration"/>
+      <vars name="renterPoints" kind="nokind" type="int"/>
+      <vars name="totalAmount" kind="nokind" type="double"/>
+    </methods>
+    <methods name="getPrice" VG="2" PAR="0" NBD="2">
+      <vars name="discountFactor" kind="nokind" type="double"/>
+      <vars name="basePrice" isRTQW="true" kind="nokind" type="int"/>
+    </methods>
+    <methods name="Customer" VG="1" PAR="1" NBD="1"/>
+  </metrics:MClass>
+  <metrics:MClass name="Enumeration" LCOM="NaN"/>
+  <metrics:MClass name="Vector" LCOM="NaN"/>
+  <metrics:MClass name="String" LCOM="NaN"/>
+  <metrics:MClass name="Object" LCOM="NaN"/>
+  <metrics:MClass name="Comparable" LCOM="NaN"/>
+  <metrics:MClass name="T" LCOM="NaN"/>
+  <metrics:MClass name="CharSequence" LCOM="NaN"/>
+  <metrics:MClass name="Object" LCOM="NaN"/>
+  <metrics:MClass name="Serializable" LCOM="NaN"/>
+  <metrics:MClass name="char" LCOM="NaN"/>
+  <metrics:MClass name="short" LCOM="NaN"/>
+  <metrics:MClass name="byte" LCOM="NaN"/>
+  <metrics:MClass name="int" LCOM="NaN"/>
+  <metrics:MClass name="long" LCOM="NaN"/>
+  <metrics:MClass name="float" LCOM="NaN"/>
+  <metrics:MClass name="void" LCOM="NaN"/>
+  <metrics:MClass name="double" LCOM="NaN"/>
+  <metrics:MClass name="boolean" LCOM="NaN"/>
+  <metrics:MMethod name="CHILDRENS" VG="1" PAR="0" NBD="1"/>
+  <metrics:MMethod name="REGULAR" VG="1" PAR="0" NBD="1"/>
+  <metrics:MMethod name="NEW_RELEASE" VG="1" PAR="0" NBD="1"/>
+  <metrics:MMethod name="_rentals" VG="1" PAR="0" NBD="1"/>
+  <metrics:Var name="arg" kind="nokind" type="notype"/>
+  <metrics:Var name="title" kind="nokind" type="notype"/>
+  <metrics:Var name="priceCode" kind="nokind" type="notype"/>
+  <metrics:Var name="_priceCode" kind="nokind" type="int"/>
+  <metrics:Var name="_title" kind="nokind" type="String"/>
+  <metrics:Var name="NEW_RELEASE" kind="nokind" type="int"/>
+  <metrics:Var name="REGULAR" kind="nokind" type="int"/>
+  <metrics:Var name="CHILDRENS" kind="nokind" type="int"/>
+  <metrics:Var name="movie" kind="nokind" type="notype"/>
+  <metrics:Var name="dayRented" kind="nokind" type="notype"/>
+  <metrics:Var name="_dayRented" kind="nokind" type="int"/>
+  <metrics:Var name="_moive" kind="nokind" type="Movie"/>
+  <metrics:Var name="arg" kind="nokind" type="notype"/>
+  <metrics:Var name="name" kind="nokind" type="notype"/>
+  <metrics:Var name="_itemPrice" kind="nokind" type="int"/>
+  <metrics:Var name="_quantity" kind="nokind" type="int"/>
+  <metrics:Var name="_rentals" kind="nokind" type="Vector"/>
+  <metrics:Var name="_name" kind="nokind" type="String"/>
+  <metrics:Var name="&lt;self>" kind="nokind" type="Movie"/>
+  <metrics:Var name="&lt;self>" kind="nokind" type="Rental"/>
+  <metrics:Var name="&lt;self>" kind="nokind" type="Customer"/>
+  <metrics:Var name="&lt;self>" kind="nokind" type="Enumeration"/>
+  <metrics:Var name="&lt;self>" kind="nokind" type="Vector"/>
+  <metrics:Var name="&lt;self>" kind="nokind" type="String"/>
+  <metrics:Var name="&lt;self>" kind="nokind" type="Object"/>
+  <metrics:Var name="&lt;self>" kind="nokind" type="Comparable"/>
+  <metrics:Var name="&lt;self>" kind="nokind" type="T"/>
+  <metrics:Var name="&lt;self>" kind="nokind" type="CharSequence"/>
+  <metrics:Var name="&lt;self>" kind="nokind" type="Object"/>
+  <metrics:Var name="&lt;self>" kind="nokind" type="Serializable"/>
+  <metrics:Var name="&lt;self>" kind="nokind" type="char"/>
+  <metrics:Var name="&lt;self>" kind="nokind" type="short"/>
+  <metrics:Var name="&lt;self>" kind="nokind" type="byte"/>
+  <metrics:Var name="&lt;self>" kind="nokind" type="int"/>
+  <metrics:Var name="&lt;self>" kind="nokind" type="long"/>
+  <metrics:Var name="&lt;self>" kind="nokind" type="float"/>
+  <metrics:Var name="&lt;self>" kind="nokind" type="void"/>
+  <metrics:Var name="&lt;self>" kind="nokind" type="double"/>
+  <metrics:Var name="&lt;self>" kind="nokind" type="boolean"/>
+  <metrics:Var name="arg0" kind="nokind" type="notype"/>
+  <metrics:Var name="arg0" kind="nokind" type="notype"/>
+</xmi:XMI>
