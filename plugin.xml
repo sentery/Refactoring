@@ -6,7 +6,7 @@
       <command
             categoryId="com.cs.tu.analysis.commands.category"
             id="com.cs.tu.analysis.commands.sampleCommand"
-            name="Sample Command">
+            name="Scan Code">
       </command>
    </extension>
    <extension
@@ -65,10 +65,20 @@
          </view>
       </perspectiveExtension>
    </extension>
-   <extension
-         point="org.eclipse.help.contexts">
-      <contexts
-            file="contexts.xml">
-      </contexts>
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated CFG -->
+      <package
+            uri="http://com/cs/tu/analysis/cfg"
+            class="cfg.CfgPackage"
+            genModel="Metamodels/CFG.genmodel"/>
    </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated metrics -->
+      <package
+            uri="http://metrics/1.0"
+            class="com.cs.tu.analysis.metrics.MetricsPackage"
+            genModel="Metamodels/metrics.genmodel"/>
+   </extension>
+
 </plugin>

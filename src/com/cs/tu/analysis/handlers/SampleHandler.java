@@ -1,21 +1,19 @@
 package com.cs.tu.analysis.handlers;
 
-import java.security.acl.LastOwnerException;
-
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.ISelectionService;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
-import org.eclipse.jdt.core.ICompilationUnit;
-import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.viewers.IStructuredSelection;
 
-import com.cs.tu.analysis.core.Gast2Cfg_M2M;
+import com.cs.tu.analysis.core.GAST2PDG_M2M;
+import com.cs.tu.analysis.core.PDG2METRICS_M2M;
 import com.cs.tu.analysis.views.AnalysisView;
 
 /**
@@ -51,11 +49,17 @@ public class SampleHandler extends AbstractHandler {
 				// get the path
 				IPath path = file.getLocation();
 				
-				Gast2Cfg_M2M gast2Cfg_M2M = new Gast2Cfg_M2M();
-				String filePath = gast2Cfg_M2M.transfrom2CFG(file);
+				GAST2PDG_M2M gast2Cfg_M2M = new GAST2PDG_M2M();
+				String filePath = gast2Cfg_M2M.transfrom2PDG(file);
 				if(filePath != null){
+					
+				PDG2METRICS_M2M pdg2Metrics_M2M = new PDG2METRICS_M2M();
+				String metricsPath = pdg2Metrics_M2M.transfrom2Metrics(filePath);
+				if( metricsPath != null) {
 					AnalysisView analysisView =	(AnalysisView) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView(AnalysisView.ID);
-					analysisView.runAnalysis(filePath);
+					analysisView.runAnalysis(metricsPath);
+				}
+					
 				}
 
 			}else{

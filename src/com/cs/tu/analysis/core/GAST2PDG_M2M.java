@@ -1,14 +1,13 @@
 package com.cs.tu.analysis.core;
 
 
-import java.io.FileInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
-import org.eclipse.core.internal.resources.Resource;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -29,7 +28,7 @@ import org.eclipse.m2m.atl.engine.emfvm.launch.EMFVMLauncher;
 import org.osgi.framework.Bundle;
 
 
-public class Gast2Cfg_M2M {
+public class GAST2PDG_M2M {
 	private Properties properties; 
 
 	/**
@@ -54,20 +53,28 @@ public class Gast2Cfg_M2M {
 	*/ 
 	
 	
-	public String  transfrom2CFG(IFile file) throws CoreException{
+	public String  transfrom2PDG(IFile file) throws CoreException{
 		
-		String filePath = null;;
+		String filePath = null;
 		try { 
 			
 			
-			Gast2Cfg_M2M runner = new Gast2Cfg_M2M(); 
+			GAST2PDG_M2M runner = new GAST2PDG_M2M(); 
 		    runner.loadModels(file.getContents()); 
-		    runner.doGAST2CFG_M2M(new NullProgressMonitor()); 
+		    runner.doGAST2PDG_M2M(new NullProgressMonitor()); 
 		 
 		    filePath = file.getLocation().toPortableString();
 		    filePath = filePath.substring(0, filePath.lastIndexOf("/"));
-		    filePath = "file:///"+filePath+"/dfg.xmi";
-		    runner.saveModels(filePath); 
+//		    filePath = "file:///"+filePath+"/pdg.xmi";
+		    filePath = filePath+"/pdg.xmi";
+		    File filePDG = new File(filePath);
+		    if(filePDG.createNewFile()){
+		    	System.out.println("pdg.xmi is created");
+		    }else{
+		    	System.out.println("pdg.xmi is not created it aready exist!");
+		    }
+		 
+		    runner.saveModels(filePDG.toString()); 
 		    
 //		    Analyzer analyzer = new Analyzer();
 //		    analyzer.convertXMItoModel(filePath);
@@ -103,7 +110,7 @@ public class Gast2Cfg_M2M {
 		  * 
 		  * @generated 
 		  */ 
-		 public Gast2Cfg_M2M() throws IOException { 
+		 public GAST2PDG_M2M() throws IOException { 
 //		  properties = new Properties(); 
 //		  properties.load(getFileURL("StateToArmy_M2M.properties").openStream()); 
 //		  Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("ecore", new EcoreResourceFactoryImpl()); 
@@ -166,7 +173,9 @@ public class Gast2Cfg_M2M {
 		 public  void saveModels(String outModelPath) throws ATLCoreException { 
 		  IExtractor extractor = new EMFExtractor(); 
 		  extractor.extract(outModel, outModelPath); 
-		 
+		  
+	
+	
 			
 			
 		 } 
@@ -185,12 +194,12 @@ public class Gast2Cfg_M2M {
 		  * 
 		  * @generated 
 		  */ 
-		 public Object doGAST2CFG_M2M(IProgressMonitor monitor) throws ATLCoreException, IOException, ATLExecutionException { 
+		 public Object doGAST2PDG_M2M(IProgressMonitor monitor) throws ATLCoreException, IOException, ATLExecutionException { 
 		  ILauncher launcher = new EMFVMLauncher(); 
 		  Map<String, Object> launcherOptions = new HashMap<String,Object>(); 
 		  launcher.initialize(launcherOptions); 
 		  launcher.addInModel(inModel, "IN", "GAST"); 
-		  launcher.addOutModel(outModel, "OUT", "CFG"); 
+		  launcher.addOutModel(outModel, "OUT", "PDG"); 
 		  return launcher.launch("run", monitor, launcherOptions, (Object[]) getModulesList()); 
 		 } 
 		  
@@ -213,7 +222,7 @@ public class Gast2Cfg_M2M {
 //		   for (int i = 0; i < moduleNames.length; i++) { 
 //		    String asmModulePath = new Path(moduleNames[i].trim()).removeFileExtension().addFileExtension("asm").toString(); 
 		  	Bundle bundle = Platform.getBundle("com.cs.tu.analysis");
-			InputStream is = bundle.getEntry("Transformations/GAST2CFG.asm").openStream();
+			InputStream is = bundle.getEntry("Transformations/GAST2PDG.asm").openStream();
 		    modules[0] = is;
 //		   } 
 //		  } 

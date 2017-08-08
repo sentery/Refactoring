@@ -1,20 +1,28 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Analysis
+Bundle-Name: %pluginName
 Bundle-SymbolicName: com.cs.tu.analysis;singleton:=true
 Bundle-Version: 1.0.0.qualifier
+Bundle-ClassPath: .,
+ swing2swt.jar
 Bundle-Activator: com.cs.tu.analysis.Activator
-Bundle-Vendor: CS
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
+ org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.jdt.core;bundle-version="3.8.3",
  org.eclipse.core.expressions;bundle-version="3.4.401",
  org.eclipse.core.resources;bundle-version="3.8.1",
- com.cs.tu.FindRefactor,
  org.eclipse.emf.common,
  org.eclipse.osgi.services;bundle-version="3.3.100",
- org.eclipse.equinox.event;bundle-version="1.2.200"
+ org.eclipse.equinox.event;bundle-version="1.2.200",
+ org.eclipse.swt,
+ org.eclipse.osgi
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: com.cs.tu.analysis.metrics,
+ com.cs.tu.analysis.metrics.impl,
+ com.cs.tu.analysis.metrics.util
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.emf.common.util,
  org.eclipse.emf.ecore,
